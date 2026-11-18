@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0D0E17"><title>CRYSTALIS — цифровой мир</title>
+<style>
+:root{--bg:#0D0E17;--panel:#191A28;--panel2:#202136;--line:#302D45;--purple:#8B5CF6;--lav:#B99AFF;--text:#fff;--muted:#A5A6B8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,sans-serif;min-height:100vh}button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{height:66px;padding:0 19px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #29283D;position:sticky;top:0;background:#0D0E17;z-index:5}
+.logo{font-size:20px;font-weight:900;letter-spacing:2px;color:var(--lav)}.header-right{display:flex;align-items:center;gap:10px}.beta{font-size:10px;letter-spacing:2px;color:var(--purple)}.user-chip{border:1px solid #3E335C;background:#1A172B;color:var(--lav);border-radius:20px;padding:6px 12px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:6px}.user-chip:hover{border-color:var(--purple);background:#241F3B}.auth-tabs{display:flex;gap:8px;margin-bottom:14px}.auth-tab{flex:1;padding:10px;border-radius:11px;border:1px solid var(--line);background:#12131F;color:var(--muted);font-weight:600;font-size:13px}.auth-tab.active{background:#282140;border-color:var(--purple);color:var(--lav)}.auth-error{border-left:3px solid #EF4444;background:#2A161D;color:#FCA5A5;padding:10px 12px;border-radius:8px;font-size:12px;margin:10px 0}.auth-ok{border-left:3px solid #10B981;background:#132A24;color:#6EE7B7;padding:10px 12px;border-radius:8px;font-size:12px;margin:10px 0}
+main{max-width:760px;margin:0 auto;padding:18px 17px 36px 162px}.hero{padding:24px 21px;border:1px solid #393052;border-radius:22px;background:radial-gradient(circle at 85% 10%,#39245c 0,transparent 42%),var(--panel);margin:8px 0 27px}.crystal{font-size:43px;color:var(--lav);margin-bottom:9px}.hero h1{font-size:27px;line-height:1.15;margin:0}.hero p{color:var(--muted);font-size:14px;line-height:1.5}.slogan{color:var(--lav);font-size:10px;letter-spacing:2px;margin-top:23px}
+.eyebrow{font-size:11px;letter-spacing:3px;color:var(--muted);margin:22px 0 13px}.card{width:100%;display:flex;align-items:center;gap:15px;text-align:left;padding:17px;margin:0 0 12px;border:1px solid #29283D;border-radius:16px;background:var(--panel);color:white}.ico{font-size:25px;color:var(--lav);width:34px;text-align:center}.card strong{display:block;font-size:15px}.card small{display:block;color:var(--muted);font-size:12px;margin-top:5px;line-height:1.4}.arrow{margin-left:auto;color:var(--purple);font-size:25px}
+nav{position:fixed;top:66px;bottom:0;left:0;width:146px;display:flex;flex-direction:column;justify-content:flex-start;gap:4px;padding:14px 8px calc(14px + env(safe-area-inset-bottom));background:#151522;border-right:1px solid #29283D;z-index:6;overflow-y:auto}nav button{border:0;background:none;color:#77778D;font-size:12px;padding:11px 10px;text-align:left;border-radius:10px;display:flex;align-items:center;justify-content:flex-start;gap:9px;transition:background .15s,color .15s}nav button:hover{background:#1E1E30;color:#C4B5FD}nav button.active{color:var(--lav);font-weight:700;background:#231F38}nav button.active:after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--purple);flex-shrink:0}@media(min-width:960px){main{margin-left:calc(50% - 380px + 73px)}}
+.btn{border:0;border-radius:12px;background:linear-gradient(135deg,#8B5CF6,#6D45C7);color:white;font-weight:700;padding:13px 16px;width:100%;margin-top:10px}.btn.secondary{background:#28243B;border:1px solid #4A3B69;color:var(--lav)}.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.field{margin:13px 0}.field label{display:block;color:var(--muted);font-size:12px;margin-bottom:7px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:12px;background:#11121D;color:white;padding:13px;outline:none}.field textarea{min-height:92px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--purple)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:16px;margin:12px 0}.muted{color:var(--muted);font-size:13px;line-height:1.5}.pill{display:inline-block;padding:5px 9px;border-radius:30px;background:#2A2340;color:var(--lav);font-size:10px;margin:3px 4px 3px 0}.preview{width:100%;max-height:300px;object-fit:contain;border-radius:13px;background:#11121D;margin-top:10px}.work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.work{overflow:hidden;border:1px solid var(--line);border-radius:14px;background:var(--panel)}.work img{width:100%;height:135px;object-fit:cover;background:#11121D}.work .info{padding:10px}.work strong{font-size:13px;display:block}.work small{color:var(--muted);font-size:11px}.empty{text-align:center;padding:28px 15px;color:var(--muted);border:1px dashed #45405C;border-radius:15px}.statrow{display:flex;gap:9px}.stat{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:13px}.stat b{font-size:21px;color:var(--lav);display:block}.stat span{font-size:10px;color:var(--muted)}.notice{border-left:3px solid var(--purple);padding:10px 12px;background:#211B32;border-radius:8px;color:#D8C9F7;font-size:12px;line-height:1.5;margin:12px 0}.row{display:flex;gap:9px}.row>*{flex:1;min-width:0}.hide{display:none!important}footer{text-align:center;color:#56566D;font-size:9px;letter-spacing:2px;margin:27px 0 10px}
+
+.progress-track{height:9px;background:#29283D;border-radius:20px;overflow:hidden;margin:13px 0 8px}.progress-fill{height:100%;background:linear-gradient(90deg,#8055E8,#C09AFF);border-radius:20px;transition:width .3s}.lesson-card{align-items:center}.learn-categories{margin-bottom:12px}.quiz-option{display:block;width:100%;font-size:13px}.panel details{padding:7px 0}.panel details summary{color:var(--lav);font-weight:700;cursor:pointer}
+.mentor-head{display:flex;align-items:center;gap:12px}.mentor-avatar{width:48px;height:48px;border-radius:15px;background:#30234B;color:#D6C0FF;display:grid;place-items:center;font-size:25px;flex-shrink:0}.chat-log{display:flex;flex-direction:column;gap:9px;margin:14px 0}.chat-msg{max-width:92%;padding:11px 13px;border-radius:14px;font-size:13px;line-height:1.5;white-space:pre-wrap}.chat-msg.bot{background:#252137;border:1px solid #3A3154;align-self:flex-start}.chat-msg.user{background:#493477;align-self:flex-end}.quick-questions{display:flex;flex-wrap:wrap;gap:7px}.quick-questions button{border:1px solid #51416F;background:#211B32;color:#D8C9F7;border-radius:18px;padding:8px 10px;font-size:11px}.chat-input{display:flex;gap:7px;align-items:stretch}.chat-input textarea{flex:1;min-width:0;min-height:48px;max-height:110px;border:1px solid var(--line);border-radius:12px;background:#11121D;color:white;padding:11px;resize:vertical}.chat-input button{width:82px;margin:0;padding:8px}.mentor-status{font-size:12px;color:var(--muted);margin-top:8px}.mentor-settings{border:1px solid #393052;border-radius:13px;padding:12px;margin:12px 0;background:#141321}.mentor-settings input{width:100%;border:1px solid var(--line);border-radius:10px;background:#11121D;color:white;padding:11px;margin:6px 0 9px}.mentor-settings label{display:block;color:var(--muted);font-size:11px;margin-top:8px}
+/* Иллюстрации CRYSTALIS */
+.topic-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:12px 0 22px}
+.topic-tile{overflow:hidden;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#1B1B2D,#121321)}
+.topic-tile img{display:block;width:100%;aspect-ratio:1.5;object-fit:cover;background:#11121D}
+.topic-tile div{padding:10px 11px}.topic-tile strong{font-size:13px;display:block}.topic-tile small{display:block;color:var(--muted);font-size:11px;line-height:1.4;margin-top:4px}
+.lesson-art{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:13px;display:block;margin:0 0 13px;border:1px solid #393052}
+.feature-art{width:100%;aspect-ratio:16/7;object-fit:cover;border-radius:14px;display:block;margin:10px 0 14px}
+@media(min-width:560px){.topic-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Вступительная анимация CRYSTALIS */
+#crystalisIntro{position:fixed;inset:0;z-index:9999;background:#000;overflow:hidden;opacity:1;transition:opacity .8s ease}
+#crystalisIntro.out{opacity:0;pointer-events:none}
+#crystalisIntro canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+#crystalisIntro .intro-text{position:absolute;left:0;right:0;bottom:calc(17% + env(safe-area-inset-bottom));text-align:center;pointer-events:none}
+#crystalisIntro .intro-wordmark{font-size:clamp(26px,8vw,42px);font-weight:900;letter-spacing:.75em;padding-left:.75em;color:#efe6ff;text-shadow:0 0 26px #9464f8,0 0 58px #6d3fe0;opacity:0;filter:blur(10px);transition:opacity 1.7s ease,letter-spacing 2.4s cubic-bezier(.2,.7,.2,1),padding-left 2.4s cubic-bezier(.2,.7,.2,1),filter 1.7s ease}
+#crystalisIntro.show .intro-wordmark{opacity:1;letter-spacing:.3em;padding-left:.3em;filter:blur(0)}
+#crystalisIntro .intro-caption{margin-top:12px;font-size:10px;letter-spacing:.34em;padding-left:.34em;color:#a99ac8;opacity:0;transition:opacity 1.4s ease 1.1s}
+#crystalisIntro.show .intro-caption{opacity:1}
+#crystalisIntro .intro-skip{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(26px + env(safe-area-inset-bottom));border:1px solid #3a2e57;border-radius:30px;padding:9px 17px;color:#cbb8f5;background:rgba(23,18,37,.7);font-size:11px;letter-spacing:.08em}
+.chat-room{display:flex;flex-direction:column;gap:8px;height:52vh;min-height:280px;overflow-y:auto;padding:12px;border:1px solid var(--line);border-radius:14px;background:#11121D;margin:12px 0}.chat-room .chat-msg{max-width:85%}.chat-room .who{display:block;font-size:11px;font-weight:700;color:var(--lav);margin-bottom:3px}.chat-room .when{display:block;font-size:10px;color:#8E8FA6;margin-top:4px;text-align:right}.person-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}.person-row:first-of-type{border:0}.person-row .mentor-avatar{width:38px;height:38px;font-size:16px;border-radius:12px;font-weight:700}.person-row .info{flex:1;min-width:0}.person-row .info strong{display:block;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.person-row .mini{margin:0!important}.coin-chip{border:1px solid #5B4A1E;background:#2A2312;color:#F5D06B;border-radius:20px;padding:6px 11px;font-size:11px;font-weight:700;white-space:nowrap}.coin-chip:hover{border-color:#F5D06B}.bell{position:relative;border:1px solid #3E335C;background:#1A172B;color:var(--lav);border-radius:50%;width:32px;height:32px;display:grid;place-items:center;font-size:14px;padding:0}.bell:hover{border-color:var(--purple)}.bell .badge{position:absolute;top:-4px;right:-4px;min-width:16px;height:16px;border-radius:9px;background:#EF4444;color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+#navToggle{position:fixed;top:78px;left:146px;width:24px;height:46px;border:1px solid #29283D;border-left:0;border-radius:0 12px 12px 0;background:#151522;color:var(--lav);font-size:18px;line-height:1;padding:0;z-index:7;transition:left .25s}#navToggle:hover{background:#231F38}
+nav{transition:transform .25s}body.nav-collapsed nav{transform:translateX(-100%)}body.nav-collapsed #navToggle{left:0}body.nav-collapsed main{padding-left:17px;margin-left:auto}
+.notif-panel{position:fixed;top:60px;right:12px;width:min(340px,calc(100vw - 24px));max-height:70vh;overflow-y:auto;background:var(--panel);border:1px solid #4A3B69;border-radius:16px;padding:8px;z-index:20;box-shadow:0 12px 40px rgba(0,0,0,.55)}.notif-item{display:block;width:100%;text-align:left;border:0;background:none;color:#fff;padding:10px;border-radius:10px;font-size:13px;line-height:1.4}.notif-item:hover{background:#231F38}.notif-item.new{border-left:3px solid var(--purple);background:#1E1A30}.notif-item small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+#toast{position:fixed;top:74px;left:50%;transform:translateX(-50%);max-width:min(420px,calc(100vw - 24px));background:#2B2146;border:1px solid var(--purple);color:#fff;padding:11px 15px;border-radius:14px;font-size:13px;z-index:30;box-shadow:0 10px 30px rgba(0,0,0,.5)}#toast button{margin-left:10px;border:0;background:var(--purple);color:#fff;border-radius:9px;padding:5px 10px;font-weight:700}
+.lot img,.lot .ph{width:100%;height:135px;object-fit:cover;background:#11121D;display:block}.lot .ph{display:grid;place-items:center;color:#B99AFF;font-size:40px}.lot .info .btn{margin-top:8px;padding:9px}.price{color:#F5D06B;font-weight:800;font-size:13px}[data-prof]{cursor:pointer}.person-row .info strong[data-prof]:hover,.who[data-prof]:hover,.seller[data-prof]:hover{text-decoration:underline}.seller{color:var(--lav);font-size:11px}
+@media(max-width:520px){.beta{display:none}.logo{font-size:17px;letter-spacing:1px}header{padding:0 12px}.header-right{gap:7px}.user-chip{padding:6px 9px}}
+.mini{width:auto!important;display:inline-block;padding:7px 11px!important;margin:7px 6px 0 0!important;font-size:12px}.devrow{border-top:1px solid var(--line);padding-top:11px;margin-top:11px}.devrow:first-child{border:0;padding:0;margin:0}.inbox-msg{border-left:3px solid var(--purple);padding:4px 10px;margin:9px 0}
+.avatar-img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.game-canvas{width:100%;max-width:360px;height:480px;background:#0e0f1a;border:2px solid var(--purple);border-radius:16px;display:block;margin:12px auto;touch-action:none}
+.ach-card{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:var(--panel2)}
+.ach-tier{display:inline-block;padding:3px 9px;border-radius:12px;font-size:11px;font-weight:700;background:#2D234A;color:#D8B4FE;margin-right:6px}
+.fav-btn{background:none;border:1px solid #4A3B69;color:#F472B6;border-radius:10px;padding:7px 10px;font-size:12px;margin-top:6px;width:100%}
+.fav-btn.active{background:#3B1D36;border-color:#F472B6}
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.filter-bar input,.filter-bar select{flex:1;min-width:130px;border:1px solid var(--line);border-radius:12px;background:#11121D;color:white;padding:10px}
+
+/* Значки меню */
+nav .ni{display:grid;place-items:center;width:20px;height:20px;flex-shrink:0;opacity:.85;transition:opacity .15s,filter .15s}
+nav .ni svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+nav .nl{flex:1;min-width:0;white-space:nowrap}
+nav button:hover .ni,nav button.active .ni{opacity:1}
+nav button.active .ni{filter:drop-shadow(0 0 5px currentColor)}
+/* Картинки в шапках страниц и на главной */
+.hero{position:relative;overflow:hidden}
+.hero>:not(.hero-art){position:relative;z-index:1}
+.hero-art{position:absolute;right:0;top:0;height:100%;width:58%;object-fit:cover;object-position:center;z-index:0;pointer-events:none;opacity:.92;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 62%);mask-image:linear-gradient(90deg,transparent 0,#000 62%)}
+.hero:not(.home) h1,.hero:not(.home) p{max-width:62%}
+.hero.home{min-height:250px}.hero.home h1,.hero.home p{max-width:60%}
+.hero.home .hero-art{width:78%;object-fit:contain;object-position:right center;-webkit-mask-image:none;mask-image:none;opacity:1}
+@media(max-width:520px){.hero-art{opacity:.55;width:70%}.hero:not(.home) h1,.hero:not(.home) p,.hero.home h1,.hero.home p{max-width:78%}.hero.home .hero-art{opacity:.6}}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:14px 0 6px}
+.step{display:block;padding:0;overflow:hidden;text-align:left;color:#fff;border:1px solid var(--line);border-radius:15px;background:linear-gradient(145deg,#1B1B2D,#121321);transition:transform .15s,border-color .15s}
+.step:hover{transform:translateY(-2px);border-color:var(--purple)}
+.step img{display:block;width:100%;aspect-ratio:1.5;object-fit:cover}
+.step b{display:block;font-size:13px;padding:9px 10px 0}.step small{display:block;color:var(--muted);font-size:11px;line-height:1.35;padding:3px 10px 11px}
+.promo-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;margin:0 0 6px}
+.promo{position:relative;display:block;padding:0;overflow:hidden;border:1px solid #393052;border-radius:16px;color:#fff;text-align:left;min-height:130px;background:#12131F}
+.promo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.promo:hover img{transform:scale(1.05)}
+.promo:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,9,22,.92))}
+.promo span{position:absolute;left:12px;right:12px;bottom:11px;z-index:1}.promo strong{display:block;font-size:14px}.promo small{display:block;color:#CFC6EA;font-size:11px;margin-top:3px;line-height:1.35}
+.card .thumb{width:62px;height:62px;border-radius:14px;object-fit:cover;flex-shrink:0;border:1px solid #393052;background:#11121D}
+.empty-art{display:block;width:min(240px,72%);aspect-ratio:3/2;object-fit:cover;border-radius:14px;margin:0 auto 12px;border:1px solid #393052}
+.topic-tile{transition:transform .15s,border-color .15s}.topic-tile:hover{transform:translateY(-2px);border-color:#6B4FC4}
+.chat-input .attach{width:auto;margin-top:0;padding:0 14px;flex-shrink:0;font-size:18px;line-height:1}
+.chat-prev{display:flex;align-items:center;gap:10px;margin:8px 0 0;padding:8px;border:1px solid var(--line);border-radius:12px;background:#11121D}
+.chat-prev img{width:64px;height:64px;object-fit:cover;border-radius:9px}.chat-prev span{flex:1;color:var(--muted);font-size:12px}
+.chat-prev button{border:0;background:#2A2340;color:var(--lav);border-radius:9px;padding:8px 11px;font-weight:700}
+.chat-img{display:block;max-width:100%;max-height:280px;min-width:120px;min-height:80px;object-fit:cover;border-radius:10px;margin:0 0 6px;background:#1A1730;cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:50;background:rgba(5,5,12,.92);display:grid;place-items:center;padding:16px;cursor:zoom-out}
+.lightbox img{max-width:100%;max-height:100%;border-radius:12px;box-shadow:0 10px 50px rgba(0,0,0,.6)}
+@media(max-width:768px){
+ main{padding-left:17px}nav{box-shadow:8px 0 28px rgba(0,0,0,.5)}
+ body.nav-collapsed nav{transform:translateX(-100%)}
+ body.nav-collapsed #navToggle{left:0}
+ body.nav-collapsed main{padding-left:17px;margin-left:auto}
+}
+</style></head><body>
+<div id="crystalisIntro" aria-label="Заставка CRYSTALIS"><canvas id="introCanvas"></canvas><div class="intro-text"><div class="intro-wordmark">CRYSTALIS</div><div class="intro-caption">ТВОЙ ЦИФРОВОЙ МИР</div></div><button class="intro-skip" id="skipIntro">Пропустить</button></div>
+<header><div class="logo">◇ CRYSTALIS</div><div class="header-right"><span class="beta">БЕТА 1.9</span><button class="coin-chip hide" id="coinChip" title="Твой баланс — открыть торговую площадку">◈ 0 Сойн</button><button class="bell hide" id="bellBtn" title="Уведомления" aria-label="Уведомления">🔔<span class="badge hide" id="bellBadge">0</span></button><button class="user-chip" id="headerAuthBtn" data-go="Профиль">◇ Войти</button></div></header>
+<main id="app"></main><nav id="nav"></nav><button id="navToggle" aria-label="Скрыть или показать меню" title="Скрыть меню">‹</button><div class="notif-panel hide" id="notifPanel"></div><div id="toast" class="hide"></div><input id="imagePicker" type="file" accept="image/*" class="hide">
+<script>
+const BASE_KEY='crystalis_artworks_v1',BASE_CKEY='crystalis_collections_v1',BASE_LKEY='crystalis_learning_v1',BASE_MKEY='crystalis_mentor_history_v1';
+const TOKEN_KEY='crystalis_auth_token_v1',USER_KEY='crystalis_auth_user_v1',LOCAL_USERS_KEY='crystalis_local_users_v1';
+const CLIENT_VERSION='1.9.1'; // держи в одном значении с APP_VERSION на сервере (main.js и netlify/functions/api.js)
+const COIN='Сойн'; // название внутренней валюты
+let knownRev=null,coins=null;
+let tab='Главная',chosenImage='',authMode='login',authMessage='';
+let currentUser=(()=>{try{return JSON.parse(localStorage.getItem(USER_KEY)||'null')}catch(e){return null}})();
+let authToken=localStorage.getItem(TOKEN_KEY)||'';
+
+const scopedKey=base=>currentUser?`${base}_${currentUser.id}`:base;
+const getKEY=()=>scopedKey(BASE_KEY);
+const getCKEY=()=>scopedKey(BASE_CKEY);
+const getLKEY=()=>scopedKey(BASE_LKEY);
+const getMKEY=()=>scopedKey(BASE_MKEY);
+
+function updateHeaderUser(){
+ const btn=document.getElementById('headerAuthBtn');
+ if(!btn)return;
+ btn.textContent=currentUser?`✦ ${currentUser.name||currentUser.login}`:'◇ Войти';
+ if(typeof setCoins==='function')setCoins(coins);
+}
+
+async function syncToServer(){
+ if(!currentUser||!authToken)return;
+ const payload={
+  artworks:read(getKEY()),
+  collections:read(getCKEY()),
+  learning:learningData(),
+  mentorHistory:(()=>{try{return JSON.parse(localStorage.getItem(getMKEY())||'[]')}catch(e){return []}})()
+ };
+ if(knownRev!==null)payload.rev=knownRev;
+ try{
+  const r=await fetch('/api/user/sync',{
+   method:'POST',
+   headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},
+   body:JSON.stringify(payload)
+  });
+  // Сервер отклонил устаревший список NFT (их меняла покупка/продажа) — подтягиваем свежие данные
+  const d=await r.json().catch(()=>({}));if(d.stale&&typeof refreshAccount==='function')refreshAccount();
+ }catch(e){}
+ // Also update local fallback user store if used offline
+ try{
+  const lu=JSON.parse(localStorage.getItem(LOCAL_USERS_KEY)||'[]');
+  const idx=lu.findIndex(u=>u.id===currentUser.id);
+  if(idx!==-1){lu[idx].data=payload;localStorage.setItem(LOCAL_USERS_KEY,JSON.stringify(lu));}
+ }catch(e){}
+}
+
+function applyAccountSession(user,token,data){
+ currentUser=user;
+ authToken=token||'';
+ localStorage.setItem(USER_KEY,JSON.stringify(user));
+ if(authToken)localStorage.setItem(TOKEN_KEY,authToken);
+ if(data){
+  if(Array.isArray(data.artworks))localStorage.setItem(getKEY(),JSON.stringify(data.artworks));
+  if(Array.isArray(data.collections))localStorage.setItem(getCKEY(),JSON.stringify(data.collections));
+  if(data.learning)localStorage.setItem(getLKEY(),JSON.stringify(data.learning));
+  if(Array.isArray(data.mentorHistory))localStorage.setItem(getMKEY(),JSON.stringify(data.mentorHistory));
+ }
+ updateHeaderUser();
+ if(typeof poll==='function')setTimeout(()=>poll(true),0);
+}
+
+function clearAccountSession(){
+ currentUser=null;
+ authToken='';knownRev=null;coins=null;notifs=[];
+ localStorage.removeItem(USER_KEY);
+ localStorage.removeItem(TOKEN_KEY);
+ updateHeaderUser();
+}
+
+const read=k=>{try{return JSON.parse(localStorage.getItem(k)||'[]')}catch(e){return []}},save=(k,v)=>{localStorage.setItem(k,JSON.stringify(v));syncToServer();};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const PAGE_ART={'Главная':'hero','Создать':'create','Галерея':'gallery','Коллекции':'collections','Студия ИИ':'studio','Обучение':'learning','Наставник':'mentor','Блокчейн':'blockchain','Витрина':'showcase','Профиль':'profile','Разработчик':'admin','Игры':'games','Достижения':'achievement','Рынок':'market','Игрок':'profile','Чаты':'chat'};
+function addEmptyArt(){document.querySelectorAll('#app .empty').forEach(e=>{if(e.querySelector('img'))return;const f=e.firstChild;if(f&&f.nodeType===3&&f.textContent.trim().length<=2)f.remove();e.insertAdjacentHTML('afterbegin','<img class="empty-art" src="images/empty.svg" alt="">')})}
+function shell(title,sub,body){const art=PAGE_ART[tab];document.getElementById('app').innerHTML=`<section class="hero${tab==='Главная'?' home':''}">${art?`<img class="hero-art" src="images/${art}.svg" alt="">`:''}<div class="crystal">✧</div><h1>${title}</h1><p>${sub}</p><div class="slogan">СОЗДАЙ СВОЙ ЦИФРОВОЙ МИР</div></section>${body}<footer>CRYSTALIS • ПЛАТФОРМА ЦИФРОВОГО ИСКУССТВА</footer>`;addEmptyArt();wire()}
+function home(){const a=read(getKEY()),c=read(getCKEY());shell('Твой цифровой мир','Создавай. Исследуй. Открывай новые возможности.',`
+<div class="statrow"><div class="stat"><b>${a.length}</b><span>РАБОТЫ</span></div><div class="stat"><b>${c.length}</b><span>КОЛЛЕКЦИИ</span></div><div class="stat"><b>0</b><span>NFT В БЛОКЧЕЙНЕ</span></div></div>
+<div class="steps">
+ <button class="step" data-go="Создать"><img src="images/create.svg" alt="Создавай" loading="lazy"><b>Создавай</b><small>Оформи свою цифровую работу</small></button>
+ <button class="step" data-go="Галерея"><img src="images/gallery.svg" alt="Исследуй" loading="lazy"><b>Исследуй</b><small>Листай галерею и коллекции</small></button>
+ <button class="step" data-go="Рынок"><img src="images/market.svg" alt="Открывай" loading="lazy"><b>Открывай</b><small>Покупай и продавай NFT</small></button>
+</div>
+<h2 class="eyebrow">МИР CRYSTALIS</h2>
+<div class="topic-gallery">
+ <article class="topic-tile"><img loading="lazy" src="images/nft.svg" alt="Цифровой NFT-кристалл"><div><strong>NFT и цифровые коллекции</strong><small>Уникальные токены и цифровые объекты</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/blockchain.svg" alt="Связанные блоки блокчейна"><div><strong>Блокчейн</strong><small>Как связаны блоки и записи сети</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/wallet.svg" alt="Криптокошелёк"><div><strong>Криптокошелёк</strong><small>Адреса, ключи и цифровые активы</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/security.svg" alt="Защита цифровых данных"><div><strong>Безопасность</strong><small>Защита ключей и личных данных</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/learning.svg" alt="Цифровое обучение"><div><strong>Обучение</strong><small>Новые знания и практика</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/achievement.svg" alt="Кубок достижений"><div><strong>Достижения</strong><small>Опыт, награды и прогресс</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/identity.svg" alt="Цифровая идентификация"><div><strong>Цифровая идентичность</strong><small>Подтверждение доступа и личности</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/verification.svg" alt="Проверка блокчейн-записей"><div><strong>Проверка данных</strong><small>Изучение записей и транзакций</small></div></article>
+ <article class="topic-tile"><img loading="lazy" src="images/ecosystem.svg" alt="Цифровая экосистема"><div><strong>Цифровая экосистема</strong><small>Связь технологий и проектов</small></div></article>
+</div>
+<div class="promo-grid">
+ <button class="promo" data-go="Игры"><img src="images/games.svg" alt="" loading="lazy"><span><strong>Игровой центр</strong><small>Аркады и награды в ${COIN}</small></span></button>
+ <button class="promo" data-go="Достижения"><img src="images/achievement.svg" alt="" loading="lazy"><span><strong>Достижения</strong><small>Опыт, награды и прогресс</small></span></button>
+</div>
+<h2 class="eyebrow">ВОЗМОЖНОСТИ</h2>
+${[['✦','Студия ИИ','Подготовка запросов для создания изображений','Студия ИИ','studio'],['◇','Создать NFT','Загрузи изображение и оформи цифровую работу','Создать','create'],['▣','Коллекции','Собирай работы в тематические подборки','Коллекции','collections'],['▤','Обучение','Изучай NFT, блокчейн и цифровую экономику','Обучение','learning'],['◈','Торговая площадка','Продавай и покупай NFT за '+COIN,'Рынок','market'],['✦','Наставник','Задавай вопросы и получай учебные подсказки','Наставник','mentor'],['✉','Чаты','Общий чат и личные переписки с друзьями','Чаты','chat'],['⌁','Блокчейн','Узнай, как устроены цифровые транзакции','Блокчейн','blockchain'],['▧','Витрина','Просматривай свои цифровые работы','Витрина','showcase']].map(x=>`<button class="card" data-go="${x[3]}"><img class="thumb" src="images/${x[4]}.svg" alt="" loading="lazy"><span><strong>${x[1]}</strong><small>${x[2]}</small></span><span class="arrow">›</span></button>`).join('')}`)}
+function creator(){shell('Создать NFT','Оформи цифровую работу и сохрани её в своей галерее.',`
+<div class="panel"><div class="field"><label>Изображение</label><button class="btn secondary" id="pickImage">＋ Выбрать фотографию из галереи</button><div id="imagePreview">${chosenImage?`<img class="preview" src="${chosenImage}">`:'<p class="muted">Фотография ещё не выбрана</p>'}</div></div>
+<div class="field"><label>Название работы *</label><input id="artTitle" placeholder="Например, Кристальные мечты"></div>
+<div class="field"><label>Описание</label><textarea id="artDesc" placeholder="Расскажи историю своей работы..."></textarea></div>
+<div class="row"><div class="field"><label>Категория</label><select id="artCategory"><option>Цифровое искусство</option><option>Фотография</option><option>Абстракция</option><option>Фэнтези</option><option>Другое</option></select></div><div class="field"><label>Редкость (макет)</label><select id="artRarity"><option>Обычная</option><option>Необычная</option><option>Редкая</option><option>Эпическая</option><option>Легендарная</option></select></div></div>
+<div class="field"><label>Свойства и теги</label><input id="artTraits" placeholder="фиолетовый, кристалл, фэнтези"></div>
+<div class="field"><label>Коллекция</label><select id="artCollection"><option value="">Без коллекции</option>${read(getCKEY()).map(c=>`<option>${esc(c.name)}</option>`).join('')}</select></div>
+<button class="btn" id="saveArt">Сохранить работу</button><button class="btn ghost" id="clearArt">Очистить форму</button>
+<div class="notice">Сохранённая работа — цифровой макет. Она ещё не выпущена в блокчейне и не является настоящим NFT.</div></div>`)}
+let galSearch='',galCat='',galRarity='',galFavOnly=false;
+const getFavs=()=>{if(currentUser&&Array.isArray(currentUser.favs))return currentUser.favs;try{return JSON.parse(localStorage.getItem('crystalis_favs')||'[]')}catch(e){return []}};
+function gallery(){
+ const all=read(getKEY()),favs=getFavs();
+ const list=all.filter(x=>{
+  if(galFavOnly&&!favs.includes(String(x.id)))return false;
+  if(galCat&&x.category!==galCat)return false;
+  if(galRarity&&x.rarity!==galRarity)return false;
+  if(galSearch&&!(String(x.title||'').toLowerCase().includes(galSearch.toLowerCase())||String(x.traits||'').toLowerCase().includes(galSearch.toLowerCase())))return false;
+  return true;
+ });
+ shell('Моя галерея','Поиск, фильтры, избранное и управление твоими NFT.',`
+  <div class="filter-bar">
+   <input id="galSearchInp" value="${esc(galSearch)}" placeholder="Поиск по названию или тегам...">
+   <select id="galCatSel"><option value="">Все категории</option><option ${galCat==='Цифровое искусство'?'selected':''}>Цифровое искусство</option><option ${galCat==='Фотография'?'selected':''}>Фотография</option><option ${galCat==='Абстракция'?'selected':''}>Абстракция</option><option ${galCat==='Фэнтези'?'selected':''}>Фэнтези</option><option ${galCat==='Другое'?'selected':''}>Другое</option></select>
+   <select id="galRarSel"><option value="">Любая редкость</option><option ${galRarity==='Обычная'?'selected':''}>Обычная</option><option ${galRarity==='Необычная'?'selected':''}>Необычная</option><option ${galRarity==='Редкая'?'selected':''}>Редкая</option><option ${galRarity==='Эпическая'?'selected':''}>Эпическая</option><option ${galRarity==='Легендарная'?'selected':''}>Легендарная</option></select>
+  </div>
+  <div class="row" style="margin-bottom:12px">
+   <button class="btn ${galFavOnly?'':'secondary'}" id="galFavToggle">♥ Избранное (${favs.length})</button>
+   <button class="btn ghost" id="galResetBtn">Сбросить фильтры</button>
+  </div>
+  ${list.length?`<div class="work-grid">${list.map(x=>{const isF=favs.includes(String(x.id));return `<article class="work">${x.image?`<img src="${x.image}">`:'<div style="height:135px;display:grid;place-items:center;color:#B99AFF;font-size:40px">◇</div>'}<div class="info"><strong>${esc(x.title)}</strong><small>${esc(x.category)} · ${esc(x.rarity)}</small><button class="fav-btn ${isF?'active':''}" data-fav="${esc(x.id)}">${isF?'♥ В избранном':'♡ В избранное'}</button>${serverAccount()?`<button class="btn" data-sell="${x.id}" style="padding:9px">Продать за ${COIN}</button>`:''}<button class="btn secondary" data-delete="${x.id}">Удалить</button></div></article>`}).join('')}</div>`:'<div class="empty">◇<p>Работы не найдены.</p><button class="btn" data-go="Создать">Создать работу</button></div>'}
+ `);
+ const gs=document.getElementById('galSearchInp');if(gs)gs.oninput=()=>{galSearch=gs.value;gallery();document.getElementById('galSearchInp')?.focus()};
+ const gc=document.getElementById('galCatSel');if(gc)gc.onchange=()=>{galCat=gc.value;gallery()};
+ const gr=document.getElementById('galRarSel');if(gr)gr.onchange=()=>{galRarity=gr.value;gallery()};
+ const gf=document.getElementById('galFavToggle');if(gf)gf.onclick=()=>{galFavOnly=!galFavOnly;gallery()};
+ const gres=document.getElementById('galResetBtn');if(gres)gres.onclick=()=>{galSearch='';galCat='';galRarity='';galFavOnly=false;gallery()};
+ document.querySelectorAll('[data-fav]').forEach(b=>b.onclick=async()=>{
+  const id=String(b.dataset.fav);
+  if(serverAccount()){
+   try{const d=await api('/fav/toggle',{id});currentUser.favs=d.favs;localStorage.setItem(USER_KEY,JSON.stringify(currentUser));gallery()}catch(e){alert(e.message)}
+  }else{
+   const f=getFavs();const i=f.indexOf(id);if(i>=0)f.splice(i,1);else f.unshift(id);localStorage.setItem('crystalis_favs',JSON.stringify(f));gallery();
+  }
+ });
+}
+function collections(){const c=read(getCKEY()),a=read(getKEY());shell('Коллекции','Создавай тематические подборки своих работ.',`<div class="panel"><div class="field"><label>Название коллекции</label><input id="colName" placeholder="Например, Кристальные миры"></div><div class="field"><label>Описание</label><textarea id="colDesc" placeholder="О чём эта коллекция?"></textarea></div><button class="btn" id="addCollection">＋ Создать коллекцию</button></div>${c.length?c.map(x=>`<div class="panel"><strong>${esc(x.name)}</strong><p class="muted">${esc(x.desc||'Без описания')}</p><span class="pill">${a.filter(w=>w.collection===x.name).length} работ</span><button class="btn ghost" data-delcol="${x.id}">Удалить коллекцию</button></div>`).join(''):'<div class="empty">Коллекций пока нет</div>'}`)}
+function ai(){shell('Студия ИИ','Подготовь текстовый запрос для будущего создания изображения.',`<div class="panel"><div class="field"><label>Опиши изображение</label><textarea id="aiPrompt" placeholder="Например: сияющий кристалл в фантастическом космосе, фиолетовый туман..."></textarea></div><div class="field"><label>Художественный стиль</label><select id="aiStyle"><option>Цифровое искусство</option><option>Фэнтези</option><option>Трёхмерная графика</option><option>Аниме</option><option>Минимализм</option><option>Абстракция</option></select></div><button class="btn" id="makePrompt">Сформировать запрос</button><div id="promptResult"></div><div class="notice">Для настоящей генерации нужно подключить внешний сервис ИИ через защищённый сервер. Сейчас раздел составляет запрос, но ещё не создаёт изображение.</div></div>`)}
+
+
+const courseLessons=[
+{id:'nft',title:'Что такое NFT?',level:'Начальный',time:'5 минут',topic:'Основы',text:'NFT (невзаимозаменяемый токен) — уникальная запись в блокчейне. Она помогает отличить один токен от другого и может содержать ссылку на цифровой объект или сведения о нём. Важно: сам файл изображения и NFT — не одно и то же. Покупка токена не всегда автоматически передаёт авторские права на изображение.',example:'Представь билет на концерт: он подтверждает право на конкретное место и событие. NFT похож на уникальную цифровую запись, но реальные права зависят от условий проекта и закона.',question:'Что лучше всего описывает NFT?',answers:['Обычный файл изображения','Уникальный токен в блокчейне','Любая криптовалюта'],correct:1,why:'Верно. NFT — это невзаимозаменяемый токен. Изображение может быть связано с ним, но не является самим токеном.'},
+{id:'chain',title:'Как работает блокчейн?',level:'Начальный',time:'6 минут',topic:'Технологии',text:'Блокчейн — это распределённый реестр. Записи объединяются в блоки, а блоки связываются криптографическими методами. Копии реестра хранятся у участников сети. Правила подтверждения записей зависят от конкретного блокчейна.',example:'Представь общий журнал, копии которого есть у многих участников. Новая запись добавляется после проверки по правилам сети.',question:'Что хранит блокчейн?',answers:['Распределённые записи о событиях и операциях','Только картинки','Пароли пользователей в открытом виде'],correct:0,why:'Именно так: блокчейн хранит проверяемые записи. Он не предназначен для публикации паролей.'},
+{id:'wallet',title:'Криптокошелёк и ключи',level:'Начальный',time:'7 минут',topic:'Безопасность',text:'Криптокошелёк — инструмент для управления ключами и взаимодействия с блокчейном. Публичный адрес можно сообщать для получения активов. Закрытый ключ и секретную фразу восстановления необходимо хранить в тайне: тот, кто получит к ним доступ, может получить контроль над активами.',example:'Публичный адрес похож на номер счёта для получения перевода, а секретная фраза — на главный ключ от сейфа.',question:'Что нельзя сообщать посторонним?',answers:['Публичный адрес','Название блокчейна','Секретную фразу восстановления'],correct:2,why:'Никогда не передавай секретную фразу или закрытый ключ. Настоящая служба поддержки не должна их запрашивать.'},
+{id:'mint',title:'Что такое выпуск (Mint)?',level:'Средний',time:'5 минут',topic:'Создание',text:'Mint — процесс создания токена в блокчейне. При выпуске формируется запись токена, а его свойства и связь с цифровым объектом задаются правилами платформы или смарт-контракта. Выпуск может требовать комиссию сети.',example:'Создать изображение в редакторе — ещё не значит выпустить NFT. Для выпуска нужна отдельная операция в поддерживаемой блокчейн-сети.',question:'Когда цифровая работа становится выпущенным NFT?',answers:['Когда её сохранили в телефоне','После создания токена в блокчейне','Когда добавили фильтр'],correct:1,why:'Правильно. Сохранение файла или макета в приложении не создаёт токен в блокчейне.'},
+{id:'fees',title:'Комиссии и транзакции',level:'Средний',time:'6 минут',topic:'Технологии',text:'Транзакция — операция, которую пользователь отправляет в сеть. Для её обработки в некоторых сетях требуется комиссия. Размер комиссии может меняться в зависимости от сети, нагрузки и типа операции. Перед подтверждением всегда проверяй сумму, адрес и сеть.',example:'Это похоже на плату за обработку операции. Комиссия не является гарантией успешного результата, поэтому важно читать детали перед подтверждением.',question:'От чего может зависеть комиссия сети?',answers:['От нагрузки и правил сети','От цвета изображения','От названия коллекции'],correct:0,why:'Да. На комиссию влияют правила конкретной сети и текущая нагрузка.'},
+{id:'rights',title:'Авторские права и цифровое искусство',level:'Средний',time:'7 минут',topic:'Творчество',text:'Создавая цифровую работу, используй собственные материалы или контент, на который у тебя есть разрешение. Владение NFT само по себе не означает автоматическую передачу авторских прав. Условия использования должны быть явно указаны создателем или платформой.',example:'Если ты купил цифровой токен, это не обязательно означает, что можешь печатать изображение на товарах или использовать его в рекламе.',question:'Означает ли покупка NFT автоматическую передачу авторских прав?',answers:['Да, всегда','Нет, это зависит от условий и закона','Да, если изображение красивое'],correct:1,why:'Верно. Права определяются лицензией, договором и применимым законодательством.'},
+{id:'crypto_hash',title:'Криптографическое хеширование и SHA-256',level:'Продвинутый',time:'9 минут',topic:'Криптография',text:'Криптографическая хеш-функция преобразует входные данные произвольной длины в строку фиксированного размера. Главные свойства: детерминированность, лавинный эффект (изменение даже 1 бита полностью меняет хеш) и стойкость к коллизиям.',example:'Если в документе изменить одну запятую, его SHA-256 хеш изменится полностью, что позволяет мгновенно выявить подмену метаданных NFT.',question:'Что произойдёт с SHA-256 хешем метаданных NFT, если изменить всего один символ в описании?',answers:['Изменится только последний символ хеша','Хеш изменится полностью и непредсказуемо (лавинный эффект)','Хеш останется прежним, если размер файла не изменился'],correct:1,why:'Точно! Лавинный эффект гарантирует, что малейшее изменение входных данных кардинально меняет итоговый дайджест.'},
+{id:'smart_contracts',title:'Смарт-контракты и стандарты ERC-721 / ERC-1155',level:'Продвинутый',time:'10 минут',topic:'Смарт-контракты',text:'Смарт-контракт — детерминированный код в блокчейне, исполняемый виртуальной машиной (например, EVM). Стандарт ERC-721 описывает уникальные невзаимозаменяемые токены, где каждый tokenId уникален, а ERC-1155 позволяет хранить в одном контракте как уникальные, так и полувзаимозаменяемые токены.',example:'В игровых экосистемах ERC-1155 часто используют для предметов, где у одного меча может быть 100 копий, а легендарный артефакт существует в единственном экземпляре.',question:'В чём ключевое архитектурное отличие стандарта ERC-1155 от ERC-721?',answers:['ERC-1155 не поддерживает передачу токенов между кошельками','ERC-1155 позволяет управлять множеством типов токенов в одном контракте','ERC-721 работает только без смарт-контрактoв'],correct:1,why:'Верно! ERC-1155 оптимизирует газ и позволяет объединять разные классы активов в едином смарт-контракте.'},
+{id:'consensus',title:'Механизмы консенсуса: PoW против PoS',level:'Сложный',time:'11 минут',topic:'Архитектура',text:'Консенсус решает задачу византийских генералов в децентрализованной сети. Proof-of-Work (PoW) требует вычислительной работы майнеров для поиска nonce, тогда как Proof-of-Stake (PoS) опирается на экономический залог (стейкинг) валидаторов и механизм слэшинга за злонамеренное поведение.',example:'В сети PoS валидатор, пытающийся подписать два противоречащих блока одновременно, теряет часть заблокированных монет.',question:'Какой механизм защищает сеть Proof-of-Stake от попыток валидатора подтвердить мошенническую ветку блоков?',answers:['Увеличение сложности хеширования SHA-256','Слэшинг (штрафное списание части застейканных средств валидатора)','Ручная модерация администраторами сети'],correct:1,why:'Именно так! Экономические стимулы и слэшинг делают атаку на сеть финансово невыгодной.'}
+];
+let activeLesson=null,chosenAnswer=null,quizFeedback='';
+const learningData=()=>{try{return JSON.parse(localStorage.getItem(getLKEY())||'{"done":[],"xp":0,"answers":{}}')}catch(e){return {done:[],xp:0,answers:{}}}};
+function saveLearning(v){localStorage.setItem(getLKEY(),JSON.stringify(v));syncToServer()}
+function learn(){
+ const d=learningData(),pct=Math.round(d.done.length/courseLessons.length*100);
+ shell('Академия CRYSTALIS','Изучай цифровое искусство, NFT и технологии. Получай опыт и открывай новые знания.',`
+ <div class="panel learn-progress"><div style="display:flex;justify-content:space-between;align-items:center"><strong>Твой прогресс</strong><span class="pill">${d.xp} ОПЫТА</span></div><div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div><div class="muted">${d.done.length} из ${courseLessons.length} уроков завершено · ${pct}% курса</div><div class="statrow" style="margin-top:13px"><div class="stat"><b>${d.done.length}</b><span>УРОКИ</span></div><div class="stat"><b>${d.xp}</b><span>ОПЫТ</span></div><div class="stat"><b>${d.done.length>=courseLessons.length?'1':'0'}</b><span>НАГРАДЫ</span></div></div></div>
+ <div class="panel mentor-head"><div class="mentor-avatar">✦</div><div style="flex:1"><strong>Наставник CRYSTALIS</strong><p class="muted" style="margin:4px 0 0">Поможет разобраться в уроках, терминах и ошибках</p></div><button class="btn secondary" style="width:auto;margin:0" data-go="Наставник">Открыть</button></div>
+ <h2 class="eyebrow">ПРОГРАММА ОБУЧЕНИЯ</h2>
+ <div class="learn-categories"><span class="pill">Основы</span><span class="pill">Технологии</span><span class="pill">Безопасность</span><span class="pill">Творчество</span></div>
+ ${courseLessons.map((l,i)=>`<button class="card lesson-card" data-lesson="${l.id}"><span class="ico">${d.done.includes(l.id)?'✓':'◇'}</span><span style="flex:1"><strong>${i+1}. ${l.title}</strong><small>${l.topic} · ${l.time} · ${l.level}</small></span><span class="arrow">${d.done.includes(l.id)?'✓':'›'}</span></button>`).join('')}
+ <h2 class="eyebrow">СЛОВАРЬ ТЕРМИНОВ</h2>
+ <div class="panel"><details><summary>NFT</summary><p class="muted">Невзаимозаменяемый токен — уникальная запись в блокчейне.</p></details><hr style="border-color:var(--line)"><details><summary>Блокчейн</summary><p class="muted">Распределённый реестр записей, связанных криптографическими методами.</p></details><hr style="border-color:var(--line)"><details><summary>Кошелёк</summary><p class="muted">Инструмент для управления ключами и взаимодействия с блокчейном.</p></details><hr style="border-color:var(--line)"><details><summary>Mint</summary><p class="muted">Процесс выпуска токена в блокчейне.</p></details><hr style="border-color:var(--line)"><details><summary>Смарт-контракт</summary><p class="muted">Программа в блокчейне, которая выполняет заданные правила при определённых условиях.</p></details><hr style="border-color:var(--line)"><details><summary>Комиссия сети</summary><p class="muted">Плата за обработку операции в блокчейне, если она предусмотрена сетью.</p></details></div>
+ <h2 class="eyebrow">ДОСТИЖЕНИЯ</h2><div class="panel"><strong>${d.done.length===0?'Первый шаг':d.done.length<3?'Начинающий исследователь':d.done.length<6?'Знаток CRYSTALIS':'Мастер знаний'}</strong><p class="muted">${d.done.length===0?'Пройди первый урок, чтобы получить первый опыт.':`Ты завершил ${d.done.length} уроков. Продолжай обучение!`}</p><span class="pill">${d.done.length>=1?'✦ Первый урок открыт':'◇ Новичок'}</span><span class="pill">${d.done.length>=3?'✦ Три урока пройдены':'◇ Следующая награда: 3 урока'}</span><span class="pill">${d.done.length===courseLessons.length?'✦ Академия завершена':'◇ Полный курс впереди'}</span></div>`);
+ document.querySelectorAll('[data-lesson]').forEach(b=>b.onclick=()=>openLesson(b.dataset.lesson));
+}
+function openLesson(id){
+ const l=courseLessons.find(x=>x.id===id);if(!l)return;activeLesson=id;chosenAnswer=null;quizFeedback='';
+ const d=learningData(),done=d.done.includes(id);
+ shell(l.title,`${l.topic} · ${l.time} · ${l.level}`,`
+ <button class="btn ghost" id="backLessons">← Все уроки</button>
+ <div class="panel"><img class="lesson-art" src="images/${({nft:'nft',chain:'blockchain',wallet:'wallet',mint:'nft',fees:'verification',rights:'learning'}[l.id]||'learning')}.svg" alt="Иллюстрация к уроку"><span class="pill">УРОК</span><p class="muted" style="font-size:14px">${l.text}</p><div class="notice"><strong>Пример из жизни</strong><br>${l.example}</div></div>
+ <div class="panel"><h3>Проверь себя</h3><p>${l.question}</p><div id="quizOptions">${l.answers.map((a,i)=>`<button class="card quiz-option" data-answer="${i}" style="margin-bottom:8px">${String.fromCharCode(65+i)}. ${a}</button>`).join('')}</div><div id="quizFeedback"></div><button class="btn" id="checkAnswer">Проверить ответ</button></div>
+ <div class="panel"><div class="mentor-head"><div class="mentor-avatar">✦</div><div><strong>Нужна помощь?</strong><p class="muted" style="margin:4px 0 0">Наставник объяснит тему этого урока</p></div></div><button class="btn secondary" id="askLessonMentor">Спросить наставника об этом уроке</button></div>
+ ${done?'<div class="notice">Этот урок уже завершён. Ты можешь повторить тест, но опыт повторно не начисляется.</div>':''}
+ `);
+ document.getElementById('backLessons').onclick=()=>{activeLesson=null;learn()};
+ const askMentor=document.getElementById('askLessonMentor');if(askMentor)askMentor.onclick=()=>go('Наставник');
+ document.querySelectorAll('[data-answer]').forEach(b=>b.onclick=()=>{chosenAnswer=Number(b.dataset.answer);document.querySelectorAll('[data-answer]').forEach(x=>x.style.borderColor='');b.style.borderColor='var(--purple)'});
+ document.getElementById('checkAnswer').onclick=()=>{
+  if(chosenAnswer===null){alert('Сначала выбери вариант ответа.');return}
+  const good=chosenAnswer===l.correct,fb=document.getElementById('quizFeedback');
+  if(good){let data=learningData();if(!data.done.includes(id)){data.done.push(id);data.xp+=20;saveLearning(data)}fb.innerHTML=`<div class="notice" style="border-color:#36B37E"><strong>Верно! +${d.done.includes(id)?0:20} опыта</strong><br>${l.why}</div><button class="btn" id="continueLearning">Продолжить обучение</button>`;document.getElementById('checkAnswer').disabled=true;document.getElementById('checkAnswer').style.opacity='.5';document.getElementById('continueLearning').onclick=()=>{activeLesson=null;learn()}}
+  else fb.innerHTML=`<div class="notice"><strong>Пока неверно. Попробуй ещё раз.</strong><br>Подумай над материалом урока и выбери другой ответ.</div>`;
+ };
+}
+
+function mentorReply(question, lessonId){
+ const q=question.toLowerCase();
+ const l=courseLessons.find(x=>x.id===lessonId);
+ if(/привет|здравствуй|добрый день/.test(q)) return 'Привет! Я Наставник CRYSTALIS. Могу объяснить тему урока, разобрать термин или помочь подготовиться к тесту. С чего начнём?';
+ if(/что такое nft|нфт/.test(q)) return 'NFT — невзаимозаменяемый токен: уникальная запись в блокчейне. Важно различать токен и файл изображения. Сам факт владения NFT не всегда передаёт авторские права на изображение.';
+ if(/блокчейн/.test(q)) return 'Блокчейн — распределённый реестр. Записи объединяются в блоки и связываются криптографическими методами. Участники сети проверяют новые операции по правилам конкретной сети.';
+ if(/кошел[её]к|ключ|seed|секретн/.test(q)) return 'Криптокошелёк помогает управлять ключами и взаимодействовать с блокчейном. Публичный адрес можно сообщать для получения активов. Закрытый ключ и секретную фразу восстановления никому не передавай — даже человеку, который представляется поддержкой.';
+ if(/mint|выпуск/.test(q)) return 'Mint — это выпуск токена в блокчейне. Сохранить изображение в телефоне или создать макет в CRYSTALIS — ещё не значит выпустить NFT. Для настоящего выпуска нужна отдельная операция в блокчейн-сети.';
+ if(/комисс|транзакц/.test(q)) return 'Транзакция — операция, отправляемая в сеть. В некоторых сетях за её обработку взимается комиссия. Она зависит от правил сети, типа операции и текущей нагрузки. Перед подтверждением проверяй адрес, сеть и сумму.';
+ if(/авторск|прав[ао]|лиценз/.test(q)) return 'Покупка NFT сама по себе не означает автоматическую передачу авторских прав. Права на использование изображения определяются условиями лицензии, договора и применимым законодательством.';
+ if(/ошиб|не понял|непонят|объясни проще|проще/.test(q) && l) return 'Давай проще разберём урок «'+l.title+'». '+l.example+'\n\nГлавная мысль: '+l.why;
+ if(l) return 'Сейчас открыт урок «'+l.title+'». '+l.text+'\n\nПример: '+l.example+'\n\nМожешь спросить меня о NFT, блокчейне, кошельках, выпуске токенов, комиссиях или авторских правах.';
+ return 'Я пока работаю как встроенный учебный помощник с подготовленными объяснениями, а не как подключённая облачная нейросеть. Могу помочь с темами NFT, блокчейна, криптокошельков, Mint, комиссий и авторских прав. Сформулируй вопрос по одной из этих тем.';
+}
+async function mentor(){
+ let history=[];try{history=JSON.parse(localStorage.getItem(getMKEY())||'[]')}catch(e){}
+ shell('Наставник CRYSTALIS','Твой ИИ-помощник для вопросов, обучения и идей.',`
+ <div class="panel"><div class="mentor-head"><div class="mentor-avatar">✦</div><div><strong>Наставник CRYSTALIS</strong><p class="muted" style="margin:4px 0 0">Помогает разбираться в учёбе, технологиях, творчестве и повседневных вопросах</p></div></div>
+ <div class="notice">Режим без API-ключа · требуется интернет. Подключение к Pollinations экспериментальное: если сервис не ответит, Наставник попробует помочь из встроенной базы знаний.</div>
+ <div class="mentor-settings"><strong>Состояние Наставника</strong><div id="mentorStatus" class="mentor-status">Проверяю доступность…</div><p class="muted">Ответы внешнего ИИ зависят от доступности стороннего сервиса и могут временно не работать.</p></div>
+ <div class="quick-questions"><button data-ask="Объясни, что такое NFT простыми словами">Что такое NFT?</button><button data-ask="Как работает блокчейн? Приведи пример">Как работает блокчейн?</button><button data-ask="Составь план изучения цифрового искусства с нуля">План обучения</button><button data-ask="Объясни искусственный интеллект простыми словами">Что такое ИИ?</button></div>
+ <div class="chat-log" id="mentorChat">${history.length?history.map(m=>`<div class="chat-msg ${m.role==='user'?'user':'bot'}">${esc(m.text)}</div>`).join(''):'<div class="chat-msg bot">Привет! Я Наставник CRYSTALIS. Задай вопрос — постараюсь помочь. О чём поговорим?</div>'}</div>
+ <div class="chat-input"><textarea id="mentorQuestion" placeholder="Задай любой вопрос…" maxlength="3000"></textarea><button class="btn" id="sendMentor">Отправить</button></div>
+ <button class="btn ghost" id="clearMentor">Очистить диалог</button></div>`);
+ const status=document.getElementById('mentorStatus');
+ try{const r=await fetch('/api/mentor/status');const d=await r.json();status.textContent=d.online?'Pollinations: экспериментальный режим':'Pollinations сейчас недоступен — будут использованы локальные подсказки.';}catch(e){status.textContent='Не удалось проверить сервис. Доступны встроенные подсказки.';}
+ const send=async(text)=>{const input=document.getElementById('mentorQuestion'),q=(text||input.value).trim();if(!q)return;const btn=document.getElementById('sendMentor');btn.disabled=true;btn.textContent='Думаю…';input.disabled=true;let h=[];try{h=JSON.parse(localStorage.getItem(getMKEY())||'[]')}catch(e){};h.push({role:'user',text:q});const box=document.getElementById('mentorChat');box.innerHTML=h.map(m=>`<div class="chat-msg ${m.role==='user'?'user':'bot'}">${esc(m.text)}</div>`).join('')+'<div class="chat-msg bot" id="mentorThinking">Наставник обдумывает вопрос…</div>';input.value='';box.scrollTop=box.scrollHeight;
+ try{const messages=h.slice(-12).map(m=>({role:m.role==='bot'?'assistant':'user',content:m.text}));const r=await fetch('/api/mentor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages})});const d=await r.json();if(!r.ok)throw new Error(d.error||'Ошибка ответа');h.push({role:'bot',text:d.answer+(d.fallback?'\n\n(Ответ из встроенной базы знаний)':'')});h=h.slice(-40);localStorage.setItem(getMKEY(),JSON.stringify(h));syncToServer();box.innerHTML=h.map(m=>`<div class="chat-msg ${m.role==='user'?'user':'bot'}">${esc(m.text)}</div>`).join('');
+ }catch(e){h.push({role:'bot',text:'Не удалось получить ответ: '+e.message});h=h.slice(-40);localStorage.setItem(getMKEY(),JSON.stringify(h));syncToServer();box.innerHTML=h.map(m=>`<div class="chat-msg ${m.role==='user'?'user':'bot'}">${esc(m.text)}</div>`).join('');}finally{btn.disabled=false;btn.textContent='Отправить';input.disabled=false;input.focus();box.scrollTop=box.scrollHeight;}};
+ document.getElementById('sendMentor').onclick=()=>send();document.getElementById('mentorQuestion').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}};
+ document.querySelectorAll('[data-ask]').forEach(b=>b.onclick=()=>send(b.dataset.ask));document.getElementById('clearMentor').onclick=()=>{localStorage.removeItem(getMKEY());syncToServer();mentor()};
+}
+function blockchain(){shell('Блокчейн','Изучай, как устроены записи и транзакции в распределённом реестре.',`<div class="panel"><img class="feature-art" src="images/blockchain.svg" alt="Иллюстрация блокчейна"><h3>Как проходит транзакция</h3><p class="muted">1. Пользователь формирует операцию.</p><p class="muted">2. Кошелёк подписывает её.</p><p class="muted">3. Сеть проверяет операцию.</p><p class="muted">4. После подтверждения запись появляется в блокчейне.</p><div class="notice">В этой версии нет подключения к блокчейну и отправки транзакций. Здесь представлен учебный материал.</div></div><div class="panel"><strong>Состояние подключения</strong><p class="muted">Сеть: не подключена<br>Кошелёк: не подключён<br>Транзакции: отсутствуют</p></div>`)}
+function market(){const a=read(getKEY());shell('Витрина','Предварительный просмотр твоих цифровых работ.',a.length?`<div class="work-grid">${a.map(x=>`<article class="work">${x.image?`<img src="${x.image}">`:'<div style="height:135px;display:grid;place-items:center;color:#B99AFF">◇</div>'}<div class="info"><strong>${esc(x.title)}</strong><small>${esc(x.category)} · макет</small></div></article>`).join('')}</div><div class="notice">Это личная витрина. Покупки, продажи и платежи пока не подключены.</div>`:'<div class="empty">Сначала создай работу в разделе «Создать NFT».</div>')}
+function profile(){
+ const worksCount=read(getKEY()).length, colsCount=read(getCKEY()).length, learnInfo=learningData();
+ const WEEK_MS=7*24*3600*1000;
+ const lastCh=currentUser?Number(currentUser.lastNameChange||0):0;
+ const canRename=!lastCh||(Date.now()-lastCh>=WEEK_MS);
+ const leftDays=canRename?0:Math.ceil((WEEK_MS-(Date.now()-lastCh))/(24*3600*1000));
+ const authBlock=currentUser?`
+  <div class="panel">
+   <div class="mentor-head">
+    <div class="mentor-avatar" style="overflow:hidden">${currentUser.avatar?`<img class="avatar-img" src="${currentUser.avatar}">`:'✦'}</div>
+    <div style="flex:1">
+     <strong>${esc(currentUser.name||currentUser.login)}</strong>
+     <p class="muted" style="margin:3px 0 0">@${esc(currentUser.login)} · Аккаунт активен</p>
+    </div>
+   </div>
+   <div style="margin-top:12px">
+    <span class="pill">Синхронизация с сервером</span>
+    <span class="pill">${learnInfo.xp||0} ОПЫТА</span>
+   </div>
+   <div class="field" style="margin-top:14px">
+    <label>Аватарка профиля</label>
+    <input type="file" id="avatarPicker" accept="image/*" class="hide">
+    <button class="btn secondary" id="pickAvatarBtn">Загрузить / сменить аватарку</button>
+   </div>
+   <div class="field">
+    <label>Отображаемый никнейм ${canRename?'(можно изменить сейчас)':`(смена доступна через ${leftDays} дн.)`}</label>
+    <div class="row">
+     <input id="newNickInp" value="${esc(currentUser.name||currentUser.login)}" ${canRename?'':'disabled'}>
+     <button class="btn" id="saveNickBtn" style="margin:0;width:auto" ${canRename?'':'disabled'}>Сохранить</button>
+    </div>
+   </div>
+   <div class="row" style="margin-top:12px">
+    <button class="btn secondary" id="syncNowBtn">Обновить с сервера</button>
+    <button class="btn ghost" id="logoutBtn">Выйти из аккаунта</button>
+   </div>
+  </div>
+ `:`
+  <div class="panel">
+   <div class="auth-tabs">
+    <button class="auth-tab ${authMode==='login'?'active':''}" id="tabLogin">Вход</button>
+    <button class="auth-tab ${authMode==='register'?'active':''}" id="tabRegister">Регистрация</button>
+   </div>
+   ${authMessage?`<div class="${authMessage.startsWith('✓')?'auth-ok':'auth-error'}">${esc(authMessage)}</div>`:''}
+   ${authMode==='register'?`<div class="field"><label>Имя участника</label><input id="authName" placeholder="Например, Алексей"></div>`:''}
+   <div class="field"><label>Логин (латиница, цифры, _ . -)</label><input id="authLogin" placeholder="например, alex_2026" autocomplete="username"></div>
+   <div class="field"><label>Пароль</label><input id="authPassword" type="password" placeholder="Минимум 4 символа" autocomplete="${authMode==='login'?'current-password':'new-password'}"></div>
+   ${authMode==='register'?`<div class="field"><label>Повтори пароль</label><input id="authPassword2" type="password" placeholder="Повтори пароль" autocomplete="new-password"></div>`:''}
+   <button class="btn" id="submitAuth">${authMode==='login'?'Войти в аккаунт':'Создать аккаунт'}</button>
+   <p class="muted" style="margin-top:10px;font-size:12px">${authMode==='login'?'Войди, чтобы загрузить свои работы, коллекции и прогресс обучения.':'После регистрации твои текущие работы и прогресс привяжутся к новому аккаунту.'}</p>
+  </div>
+ `;
+
+ shell('Профиль','Личный аккаунт участника, синхронизация и настройки.',`
+  ${authBlock}
+  ${currentUser&&authToken&&!authToken.startsWith('local_token_')?'<div id="inboxBox"></div>':''}
+  <div class="panel"><strong>Твоя статистика (${currentUser?esc(currentUser.login):'Гость'})</strong><p class="muted">Работ в галерее: ${worksCount}<br>Коллекций: ${colsCount}<br>Пройдено уроков: ${learnInfo.done.length} из ${courseLessons.length}</p><button class="btn secondary" id="exportData">Экспортировать данные (JSON)</button></div>
+  <div class="panel"><strong>CRYSTALIS</strong><p class="muted">Версия 1.9 · Аккаунты участников · Боковая навигация</p><span class="pill">Русский язык</span><span class="pill">${currentUser?'Аккаунт подключён':'Гостевой режим'}</span></div>
+  ${currentUser?'':'<div class="notice">Сейчас ты в гостевом режиме. Зарегистрируйся или войди в аккаунт выше, чтобы у каждого участника был собственный профиль, галерея и прогресс.</div>'}
+ `);
+ loadInbox();
+ const pa=document.getElementById('pickAvatarBtn'),ap=document.getElementById('avatarPicker');
+ if(pa&&ap){
+  pa.onclick=()=>ap.click();
+  ap.onchange=()=>{
+   const f=ap.files[0];if(!f)return;
+   const r=new FileReader();
+   r.onload=async()=>{
+    const thumb=await makeThumb(r.result);
+    if(serverAccount()){
+     try{const d=await api('/profile/update',{avatar:thumb});applyAccountSession(d.user,authToken);profile()}catch(e){alert(e.message)}
+    }else{
+     currentUser.avatar=thumb;localStorage.setItem(USER_KEY,JSON.stringify(currentUser));profile();
+    }
+   };
+   r.readAsDataURL(f);
+  };
+ }
+ const sn=document.getElementById('saveNickBtn');
+ if(sn)sn.onclick=async()=>{
+  const name=document.getElementById('newNickInp').value.trim();
+  if(name.length<2)return alert('Минимум 2 символа.');
+  if(serverAccount()){
+   try{const d=await api('/profile/update',{name});applyAccountSession(d.user,authToken);alert('Никнейм обновлён!');profile()}catch(e){alert(e.message)}
+  }else{
+   currentUser.name=name;currentUser.lastNameChange=Date.now();localStorage.setItem(USER_KEY,JSON.stringify(currentUser));updateHeaderUser();profile();
+  }
+ };
+}
+function wire(){const picker=document.getElementById('imagePicker'),pick=document.getElementById('pickImage');if(pick)pick.onclick=()=>picker.click();if(picker)picker.onchange=()=>{const f=picker.files[0];if(!f)return;if(!f.type.startsWith('image/'))return alert('Выбери файл изображения.');if(f.size>5*1024*1024)return alert('Выбери изображение размером до 5 МБ.');const r=new FileReader();r.onload=()=>{chosenImage=r.result;document.getElementById('imagePreview').innerHTML=`<img class="preview" src="${chosenImage}">`};r.readAsDataURL(f)};
+const s=document.getElementById('saveArt');if(s)s.onclick=()=>{const title=document.getElementById('artTitle').value.trim();if(!title)return alert('Введи название работы.');const a=read(getKEY());a.unshift({id:Date.now(),title,desc:document.getElementById('artDesc').value,category:document.getElementById('artCategory').value,rarity:document.getElementById('artRarity').value,traits:document.getElementById('artTraits').value,collection:document.getElementById('artCollection').value,image:chosenImage,created:new Date().toISOString()});try{save(getKEY(),a);chosenImage='';alert('Работа сохранена в галерее!');go('Галерея')}catch(e){alert('Не удалось сохранить. Попробуй выбрать фотографию меньшего размера.')}};
+const cl=document.getElementById('clearArt');if(cl)cl.onclick=()=>{chosenImage='';creator()};
+const add=document.getElementById('addCollection');if(add)add.onclick=()=>{const name=document.getElementById('colName').value.trim();if(!name)return alert('Введи название коллекции.');const c=read(getCKEY());c.push({id:Date.now(),name,desc:document.getElementById('colDesc').value});save(getCKEY(),c);go('Коллекции')};
+document.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{if(confirm('Удалить эту работу?')){save(getKEY(),read(getKEY()).filter(x=>x.id!=b.dataset.delete));go('Галерея')}});
+document.querySelectorAll('[data-delcol]').forEach(b=>b.onclick=()=>{if(confirm('Удалить коллекцию? Работы останутся в галерее.')){save(getCKEY(),read(getCKEY()).filter(x=>x.id!=b.dataset.delcol));go('Коллекции')}});
+const mk=document.getElementById('makePrompt');if(mk)mk.onclick=()=>{const p=document.getElementById('aiPrompt').value.trim();if(!p)return alert('Сначала опиши изображение.');const out=`${p}. Стиль: ${document.getElementById('aiStyle').value}. Высокое качество цифрового изображения.`;document.getElementById('promptResult').innerHTML=`<div class="panel"><strong>Готовый запрос</strong><p class="muted">${esc(out)}</p><button class="btn secondary" id="copyPrompt">Копировать запрос</button></div>`;document.getElementById('copyPrompt').onclick=()=>{if(navigator.clipboard)navigator.clipboard.writeText(out).then(()=>alert('Запрос скопирован.')).catch(()=>alert(out));else alert(out)}};
+const ex=document.getElementById('exportData');if(ex)ex.onclick=()=>{const blob=new Blob([JSON.stringify({works:read(getKEY()),collections:read(getCKEY())},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='crystalis-dannye.json';a.click();URL.revokeObjectURL(url)};
+document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+const tLogin=document.getElementById('tabLogin');if(tLogin)tLogin.onclick=()=>{authMode='login';authMessage='';profile()};
+const tReg=document.getElementById('tabRegister');if(tReg)tReg.onclick=()=>{authMode='register';authMessage='';profile()};
+const logoutBtn=document.getElementById('logoutBtn');if(logoutBtn)logoutBtn.onclick=async()=>{
+ if(authToken){try{await fetch('/api/auth/logout',{method:'POST',headers:{'Authorization':'Bearer '+authToken}})}catch(e){}}
+ clearAccountSession();authMessage='✓ Вы вышли из аккаунта.';profile();
+};
+const syncBtn=document.getElementById('syncNowBtn');if(syncBtn)syncBtn.onclick=async()=>{
+ syncBtn.disabled=true;syncBtn.textContent='Синхронизация…';
+ try{
+  const r=await fetch('/api/auth/me',{headers:{'Authorization':'Bearer '+authToken}});
+  if(r.ok){const d=await r.json();applyAccountSession(d.user,authToken,d.data);alert('Данные аккаунта синхронизированы!');profile();}
+  else{alert('Не удалось обновить данные с сервера.');}
+ }catch(e){alert('Сервер недоступен — используются локальные данные.');}
+ finally{if(syncBtn){syncBtn.disabled=false;syncBtn.textContent='Обновить с сервера';}}
+};
+const subAuth=document.getElementById('submitAuth');if(subAuth)subAuth.onclick=async()=>{
+ const login=(document.getElementById('authLogin')?.value||'').trim();
+ const password=document.getElementById('authPassword')?.value||'';
+ if(!login||!password){authMessage='Заполни логин и пароль.';return profile();}
+ if(authMode==='register'){
+  const name=(document.getElementById('authName')?.value||login).trim();
+  const p2=document.getElementById('authPassword2')?.value||'';
+  if(password!==p2){authMessage='Пароли не совпадают.';return profile();}
+  subAuth.disabled=true;subAuth.textContent='Создание…';
+  const initialData={
+   artworks:read(BASE_KEY),
+   collections:read(BASE_CKEY),
+   learning:(()=>{try{return JSON.parse(localStorage.getItem(BASE_LKEY)||'{"done":[],"xp":0,"answers":{}}')}catch(e){return {done:[],xp:0,answers:{}}}})(),
+   mentorHistory:(()=>{try{return JSON.parse(localStorage.getItem(BASE_MKEY)||'[]')}catch(e){return []}})()
+  };
+  try{
+   const r=await fetch('/api/auth/register',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({login,name,password,initialData})});
+   const d=await r.json();
+   if(!r.ok)throw new Error(d.error||'Ошибка регистрации');
+   applyAccountSession(d.user,d.token,d.data);
+   authMessage='';
+   profile();
+  }catch(e){
+   if(e.message==='Failed to fetch'||e.name==='TypeError'){
+    // Offline/static fallback
+    const lu=(()=>{try{return JSON.parse(localStorage.getItem(LOCAL_USERS_KEY)||'[]')}catch(err){return []}})();
+    if(lu.some(u=>u.login.toLowerCase()===login.toLowerCase())){authMessage='Такой логин уже занят.';return profile();}
+    const user={id:'local_'+Date.now(),login,name,password,createdAt:new Date().toISOString(),data:initialData};
+    lu.push(user);localStorage.setItem(LOCAL_USERS_KEY,JSON.stringify(lu));
+    applyAccountSession({id:user.id,login:user.login,name:user.name},'local_token_'+user.id,initialData);
+    authMessage='';profile();
+   }else{
+    authMessage=e.message;profile();
+   }
+  }
+ }else{
+  subAuth.disabled=true;subAuth.textContent='Вход…';
+  try{
+   const r=await fetch('/api/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({login,password})});
+   const d=await r.json();
+   if(!r.ok)throw new Error(d.error||'Ошибка входа');
+   applyAccountSession(d.user,d.token,d.data);
+   authMessage='';
+   profile();
+  }catch(e){
+   if(e.message==='Failed to fetch'||e.name==='TypeError'){
+    const lu=(()=>{try{return JSON.parse(localStorage.getItem(LOCAL_USERS_KEY)||'[]')}catch(err){return []}})();
+    const found=lu.find(u=>u.login.toLowerCase()===login.toLowerCase()&&u.password===password);
+    if(!found){authMessage='Неверный логин или пароль.';return profile();}
+    applyAccountSession({id:found.id,login:found.login,name:found.name},'local_token_'+found.id,found.data);
+    authMessage='';profile();
+   }else{
+    authMessage=e.message;profile();
+   }
+  }
+ }
+};
+}
+async function api(p,body){
+ const r=await fetch('/api'+p,{method:body?'POST':'GET',headers:{'Content-Type':'application/json','Authorization':'Bearer '+authToken},body:body?JSON.stringify(body):undefined});
+ const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||('Ошибка '+r.status));return d;
+}
+async function loadInbox(){
+ const box=document.getElementById('inboxBox');if(!box)return;
+ try{const {messages}=await api('/inbox');if(!messages.length)return;
+  box.innerHTML='<div class="panel"><strong>Сообщения</strong>'+messages.map(m=>`<div class="inbox-msg"><div>${esc(m.text)}</div><div class="muted" style="font-size:11px">${esc(m.from)} · ${new Date(m.at).toLocaleDateString('ru-RU')}${m.to==='all'?' · всем':''}</div></div>`).join('')+'</div>';
+ }catch(e){}
+}
+let devUsers=[];
+async function devPanel(){
+ if(!currentUser||currentUser.role!=='developer'||!authToken||authToken.startsWith('local_token_'))return shell('Доступ закрыт','Раздел только для разработчиков.','<div class="notice">Войди в аккаунт разработчика во вкладке «Профиль».</div>');
+ shell('Панель разработчика','Участники, роли, контент и сообщения.','<div id="devBox"><div class="panel muted">Загрузка…</div></div>');
+ try{devUsers=(await api('/admin/users')).users;drawDev();}catch(e){document.getElementById('devBox').innerHTML='<div class="auth-error">'+esc(e.message)+'</div>';}
+}
+function drawDev(){
+ const box=document.getElementById('devBox');
+ box.innerHTML=`<div class="panel"><strong>Сообщение</strong>
+  <div class="field"><label>Кому (all — всем, или логин)</label><input id="devTo" value="all"></div>
+  <div class="field"><textarea id="devText" rows="3" placeholder="Текст сообщения"></textarea></div>
+  <button class="btn" id="devSend">Отправить</button>
+  <button class="btn secondary" id="devLog">Журнал действий</button></div>
+  <div id="devEdit"></div>
+  <div class="panel" id="devCloud"><strong>☁ Облако (Яндекс Диск)</strong><p class="muted" id="devCloudInfo">Проверяю…</p><button class="btn secondary mini" id="devBackupNow">Сделать копию сейчас</button><button class="btn ghost mini" id="devRestore">Восстановить из копии</button><button class="btn secondary mini" id="devDownload">Скачать снимок (.gz)</button><p class="muted" style="font-size:12px;margin-top:8px">Снимок — все данные участников одним файлом. Положи его в папку <b>seed/</b> проекта под именем <b>crystalis-latest.json.gz</b> — и на любом новом сайте данные подтянутся сами.</p></div>
+  <div class="panel"><strong>Участники (${devUsers.length})</strong>${devUsers.map(u=>`<div class="devrow">
+   <div><strong>${esc(u.name)}</strong> <span class="muted">@${esc(u.login)}</span></div>
+   <div><span class="pill">${u.role==='developer'?'РАЗРАБОТЧИК':'УЧАСТНИК'}</span>${u.banned?'<span class="pill">ЗАБЛОКИРОВАН</span>':''}<span class="muted"> работ: ${u.works} · коллекций: ${u.collections}</span></div>
+   <button class="btn secondary mini" data-act="coins" data-l="${esc(u.login)}">Сойн (${fmt(u.coins??100)})</button><button class="btn secondary mini" data-act="data" data-l="${esc(u.login)}">Данные</button><button class="btn secondary mini" data-act="msg" data-l="${esc(u.login)}">Написать</button>${u.rootDev||u.login===currentUser.login?'':`<button class="btn secondary mini" data-act="role" data-l="${esc(u.login)}">${u.role==='developer'?'Снять роль':'Сделать разработчиком'}</button><button class="btn secondary mini" data-act="ban" data-l="${esc(u.login)}">${u.banned?'Разблокировать':'Заблокировать'}</button><button class="btn ghost mini" data-act="del" data-l="${esc(u.login)}">Удалить</button>`}
+  </div>`).join('')}</div>`;
+ const fail=e=>alert(e.message);
+ const cloudInfo=async()=>{
+  const el=document.getElementById('devCloudInfo');if(!el)return;
+  try{const d=await api('/admin/backup/status');
+   if(!d.configured){el.textContent='Не настроено. В Netlify → Environment variables добавь YADISK_LOGIN и YADISK_APP_PASSWORD (пароль приложения «Файлы WebDAV» из id.yandex.ru).';return}
+   const l=d.last;
+   el.innerHTML='Папка на Диске: <b>'+esc(d.folder)+'</b>. Автокопия — раз в час.<br>'+(l?(l.ok?'Последняя копия: '+new Date(l.at).toLocaleString('ru-RU')+' · записей: '+l.keys+' · '+Math.round(l.bytes/1024)+' КБ':'<span style="color:#ff8a8a">Ошибка последней копии: '+esc(l.error||'неизвестно')+'</span>'):'Копий пока не было.')
+  }catch(e){el.textContent=e.message}
+ };
+ cloudInfo();
+ document.getElementById('devBackupNow').onclick=async function(){this.disabled=true;this.textContent='Копирую…';try{const r=await api('/admin/backup/run',{});alert('Готово: сохранено записей — '+r.keys+'.')}catch(e){alert(e.message)}this.disabled=false;this.textContent='Сделать копию сейчас';cloudInfo()};
+ document.getElementById('devDownload').onclick=async function(){
+  this.disabled=true;try{const r=await fetch('/api/admin/backup/download',{headers:{Authorization:'Bearer '+authToken}});
+   if(!r.ok){const d=await r.json().catch(()=>({}));throw new Error(d.error||('Ошибка '+r.status))}
+   const u=URL.createObjectURL(await r.blob()),a=document.createElement('a');a.href=u;a.download='crystalis-latest.json.gz';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}catch(e){alert(e.message)}this.disabled=false};
+ document.getElementById('devRestore').onclick=async function(){
+  if(!confirm('Восстановить базу из последней копии на Яндекс Диске? Текущие записи с теми же ключами будут перезаписаны.'))return;
+  this.disabled=true;try{const r=await api('/admin/backup/restore',{confirm:true});alert('Восстановлено записей: '+r.keys+' (копия от '+new Date(r.at).toLocaleString('ru-RU')+').');devPanel()}catch(e){alert(e.message)}this.disabled=false};
+ document.getElementById('devSend').onclick=()=>api('/admin/message',{to:document.getElementById('devTo').value.trim()||'all',text:document.getElementById('devText').value}).then(()=>{document.getElementById('devText').value='';alert('Отправлено.')}).catch(fail);
+ document.getElementById('devLog').onclick=()=>api('/admin/log').then(d=>{document.getElementById('devEdit').innerHTML='<div class="panel"><strong>Журнал</strong>'+(d.log.map(l=>`<div class="muted" style="font-size:12px;margin-top:6px">${new Date(l.at).toLocaleString('ru-RU')} · ${esc(l.actor)} · ${esc(l.action)} → ${esc(l.target)} ${esc(l.extra)}</div>`).join('')||'<p class="muted">Пусто.</p>')+'</div>'}).catch(fail);
+ box.querySelectorAll('[data-act]').forEach(b=>b.onclick=async()=>{
+  const l=b.dataset.l,u=devUsers.find(x=>x.login===l);
+  try{
+   if(b.dataset.act==='role'){await api('/admin/user/update',{login:l,role:u.role==='developer'?'user':'developer'});devPanel();}
+   else if(b.dataset.act==='ban'){await api('/admin/user/update',{login:l,banned:!u.banned});devPanel();}
+   else if(b.dataset.act==='del'){if(confirm('Удалить аккаунт @'+l+' вместе со всеми данными?')){await api('/admin/user/delete',{login:l});devPanel();}}
+   else if(b.dataset.act==='coins'){
+    const val=prompt('Введи количество Сойн для @'+l+' (например: 500 чтобы начислить, или =1000 чтобы установить точный баланс):');
+    if(val!==null&&val.trim()!==''){
+     const s=val.trim();const isSet=s.startsWith('=');const num=Number(isSet?s.slice(1):s);
+     if(!isNaN(num)){await api('/admin/coins',{login:l,mode:isSet?'set':'add',amount:num});alert('Баланс обновлён!');devPanel();}
+    }
+   }
+   else if(b.dataset.act==='msg'){const t=prompt('Сообщение для @'+l);if(t){await api('/admin/message',{to:l,text:t});alert('Отправлено.');}}
+   else if(b.dataset.act==='data'){
+    const d=await api('/admin/user?login='+encodeURIComponent(l));
+    document.getElementById('devEdit').innerHTML=`<div class="panel"><strong>Данные @${esc(l)}</strong><p class="muted">JSON: artworks, collections, learning. Правь осторожно.</p><div class="field"><textarea id="devJson" rows="12" style="font-family:monospace;font-size:12px">${esc(JSON.stringify(d.data,null,2))}</textarea></div><button class="btn" id="devSave">Сохранить</button></div>`;
+    document.getElementById('devSave').onclick=async()=>{let j;try{j=JSON.parse(document.getElementById('devJson').value)}catch(e){return alert('Некорректный JSON')}try{await api('/admin/user/update',{login:l,data:j});alert('Сохранено.');devPanel();}catch(e){fail(e)}};
+    document.getElementById('devEdit').scrollIntoView({behavior:'smooth'});
+   }
+  }catch(e){fail(e)}
+ });
+}
+
+/* ---------- Чаты: общий чат, личные сообщения, друзья ---------- */
+let chatView={t:'list'},chatTimer=null,chatSig='';
+function stopChat(){if(chatTimer){clearInterval(chatTimer);chatTimer=null}}
+const serverAccount=()=>currentUser&&authToken&&!authToken.startsWith('local_token_');
+const initial=n=>esc((String(n||'?').trim()[0]||'?').toUpperCase());
+function chats(){
+ if(!serverAccount())return shell('Чаты','Общайся с другими участниками CRYSTALIS.','<div class="notice">Чаты доступны с аккаунтом на сервере. Войди или зарегистрируйся во вкладке «Профиль».</div><button class="btn" data-go="Профиль">Перейти в профиль</button>');
+ return chatView.t==='list'?chatList():chatRoom();
+}
+function openChat(v){chatView=v;chatSig='';go('Чаты')}
+function fmtSeen(ts){
+ if(!ts)return 'был(а) давно';
+ const d=new Date(ts),now=new Date(),diff=(now-d)/1000;
+ if(diff<60)return 'был(а) только что';
+ if(diff<3600)return 'был(а) '+Math.floor(diff/60)+' мин. назад';
+ const hm=d.toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'});
+ if(d.toDateString()===now.toDateString())return 'был(а) сегодня в '+hm;
+ if(d.toDateString()===new Date(now-864e5).toDateString())return 'был(а) вчера в '+hm;
+ return 'был(а) '+d.toLocaleDateString('ru-RU',{day:'numeric',month:'long'})+' в '+hm;
+}
+function presHtml(p){
+ if(!p||p.online===undefined)return '';
+ if(p.typing)return '<span class="tg-typing">печатает<i></i><i></i><i></i></span>';
+ return p.online?'<span class="pres on">в сети</span>':'<span class="pres">'+esc(fmtSeen(p.lastSeen))+'</span>';
+}
+const TICK_CLOCK='<svg viewBox="0 0 17 12"><circle cx="8.5" cy="6" r="4.6"/><path d="M8.5 3.6V6l1.6 1"/></svg>';
+const TICK_ONE='<svg viewBox="0 0 17 12"><path d="M3.5 6.4l3 3 7-7.4"/></svg>';
+const TICK_TWO='<svg viewBox="0 0 17 12"><path d="M1.5 6.4l3 3 6.6-7"/><path d="M7.4 8.6l1 .9 7-7.4"/></svg>';
+// Статус моего сообщения: ожидает (часы) → доставлено (1 галочка) → прочитано (2 галочки)
+function tickHtml(m){
+ if(m.read===false&&m.delivered===false)return '<span class="tick sent" title="Отправляется">'+TICK_CLOCK+'</span>';
+ if(m.read===false)return '<span class="tick delivered" title="Доставлено">'+TICK_ONE+'</span>';
+ return '<span class="tick read" title="Прочитано">'+TICK_TWO+'</span>';
+}
+function personRow(p,actions){return `<div class="person-row"><div class="mentor-avatar" data-prof="${esc(p.login)}" style="cursor:pointer">${initial(p.name)}</div><div class="info"><strong data-prof="${esc(p.login)}">${esc(p.name)}</strong><span class="muted" style="font-size:12px">@${esc(p.login)}</span>${presHtml(p)}</div>${actions}</div>`}
+function chatList(){
+ shell('Чаты','Общий чат для всех участников и личные переписки с друзьями.',`
+ <button class="card" id="openGlobal"><span class="ico">✉</span><span><strong>Общий чат</strong><small>Здесь общаются все участники CRYSTALIS</small></span><span class="arrow">›</span></button>
+ <h2 class="eyebrow">ДРУЗЬЯ</h2><div class="panel" id="friendsBox"><p class="muted">Загрузка…</p></div>
+ <h2 class="eyebrow">НАЙТИ УЧАСТНИКА</h2>
+ <div class="panel"><div class="chat-input"><input id="userQ" placeholder="Имя или логин (от 2 символов)" style="flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;background:#11121D;color:white;padding:11px"><button class="btn" id="userFind">Найти</button></div><div id="userRes"></div></div>`);
+ document.getElementById('openGlobal').onclick=()=>openChat({t:'global'});
+ const bindPeople=root=>{
+  root.querySelectorAll('[data-dm]').forEach(b=>b.onclick=()=>openChat({t:'dm',login:b.dataset.dm,name:b.dataset.name}));
+  root.querySelectorAll('[data-addf]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{await api('/friends/add',{login:b.dataset.addf});await loadFriends();await findUsers(true)}catch(e){alert(e.message);b.disabled=false}});
+  root.querySelectorAll('[data-delf]').forEach(b=>b.onclick=async()=>{if(!confirm('Убрать @'+b.dataset.delf+' из друзей?'))return;try{await api('/friends/remove',{login:b.dataset.delf});await loadFriends();await findUsers(true)}catch(e){alert(e.message)}});
+ };
+ const loadFriends=async()=>{
+  const box=document.getElementById('friendsBox');if(!box)return;
+  try{const {friends}=await api('/friends');
+   box.innerHTML=friends.length?friends.map(f=>personRow(f,`<button class="btn secondary mini" data-dm="${esc(f.login)}" data-name="${esc(f.name)}">Написать</button><button class="btn ghost mini" data-delf="${esc(f.login)}">✕</button>`)).join(''):'<p class="muted">Друзей пока нет. Найди участника ниже и добавь его — он сохранится в этом списке.</p>';
+   bindPeople(box);
+  }catch(e){box.innerHTML='<div class="auth-error">'+esc(e.message)+'</div>'}
+ };
+ const findUsers=async(quiet)=>{
+  const q=document.getElementById('userQ').value.trim(),res=document.getElementById('userRes');
+  if(q.length<2){if(!quiet)res.innerHTML='<p class="muted">Введи минимум 2 символа.</p>';return}
+  try{const {users}=await api('/users/search?q='+encodeURIComponent(q));
+   res.innerHTML=users.length?users.map(u=>personRow(u,`<button class="btn secondary mini" data-dm="${esc(u.login)}" data-name="${esc(u.name)}">Написать</button>${u.isFriend?'<span class="pill">В друзьях ✓</span>':`<button class="btn mini" data-addf="${esc(u.login)}">＋ В друзья</button>`}`)).join(''):'<p class="muted">Никого не нашли.</p>';
+   bindPeople(res);
+  }catch(e){res.innerHTML='<div class="auth-error">'+esc(e.message)+'</div>'}
+ };
+ document.getElementById('userFind').onclick=()=>findUsers();
+ document.getElementById('userQ').onkeydown=e=>{if(e.key==='Enter')findUsers()};
+ loadFriends();
+ chatTimer=setInterval(()=>{if(!document.getElementById('friendsBox')||tab!=='Чаты')return stopChat();loadFriends()},10000);
+}
+const chatImgCache=new Map();
+function prepChatImage(file){return new Promise((ok,no)=>{
+ if(!file||!file.type.startsWith('image/'))return no(new Error('Выбери файл изображения.'));
+ if(file.size>20*1024*1024)return no(new Error('Файл слишком большой (до 20 МБ).'));
+ const r=new FileReader();r.onerror=()=>no(new Error('Не удалось прочитать файл.'));
+ r.onload=()=>{const im=new Image();im.onerror=()=>no(new Error('Не удалось открыть изображение.'));
+  im.onload=()=>{const k=Math.min(1,1000/Math.max(im.width,im.height)),w=Math.max(1,Math.round(im.width*k)),h=Math.max(1,Math.round(im.height*k));
+   const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
+   let q=.82,d=c.toDataURL('image/jpeg',q);while(d.length>380000&&q>.4){q-=.1;d=c.toDataURL('image/jpeg',q)}
+   d.length>380000?no(new Error('Картинка слишком тяжёлая, выбери другую.')):ok(d)};
+  im.src=r.result};r.readAsDataURL(file)})}
+function openLightbox(src){const d=document.createElement('div');d.className='lightbox';d.innerHTML='<img alt="">';d.firstChild.src=src;d.onclick=()=>d.remove();document.body.appendChild(d)}
+async function hydrateChatImg(el){const id=el.dataset.cimg;
+ try{let s=chatImgCache.get(id);if(!s){s=(await api('/chat/image/'+encodeURIComponent(id))).image;chatImgCache.set(id,s)}el.src=s}catch(e){el.alt='Картинка недоступна'}}
+function chatRoom(){
+ const isGlobal=chatView.t==='global',base=isGlobal?'/chat/global':'/dm/'+encodeURIComponent(chatView.login);
+ shell(isGlobal?'Общий чат':esc(chatView.name||chatView.login),isGlobal?'Сообщения видят все участники.':'Личная переписка · @'+esc(chatView.login),`
+ <div class="row"><button class="btn ghost" id="chatBack">← Все чаты</button>${isGlobal?'':`<button class="btn secondary" id="chatFriend">＋ В друзья</button><button class="btn secondary" data-prof="${esc(chatView.login)}">Профиль</button>`}</div>
+ ${isGlobal?'':'<div class="chat-pres" id="chatPres"></div>'}<div class="chat-room" id="chatLog"><p class="muted">Загрузка…</p></div>
+ <div class="chat-prev hide" id="chatPrev"><img alt=""><span>Картинка прикреплена</span><button id="chatPrevX" aria-label="Убрать картинку">✕</button></div>
+ <div class="chat-input"><button class="btn secondary attach" id="chatAttach" title="Прикрепить картинку" aria-label="Прикрепить картинку">📎</button><textarea id="chatText" placeholder="Напиши сообщение…" maxlength="1000"></textarea><button class="btn" id="chatSend">Отправить</button></div><input type="file" id="chatFile" accept="image/*" class="hide">`);
+ let pending='';
+ const log=document.getElementById('chatLog'),mine=currentUser.login.toLowerCase();
+ const draw=msgs=>{
+  const sig=msgs.length+':'+(msgs.length?msgs[msgs.length-1].id:'')+':'+msgs.reduce((n,m)=>n+(m.delivered?1:0)+(m.read?2:0),0);
+  if(sig===chatSig)return;chatSig=sig;
+  const stick=log.scrollHeight-log.scrollTop-log.clientHeight<80;
+  log.innerHTML=msgs.length?msgs.map(m=>{const me=m.from.toLowerCase()===mine;return `<div class="chat-msg ${me?'user':'bot'}">${isGlobal&&!me?`<span class="who" data-prof="${esc(m.from)}">${esc(m.name)}</span>`:''}${m.img?`<img class="chat-img" data-cimg="${esc(m.id)}" alt="Картинка"${chatImgCache.get(m.id)?` src="${chatImgCache.get(m.id)}"`:''}>`:''}${esc(m.text)}<span class="when">${new Date(m.at).toLocaleTimeString('ru-RU',{hour:'2-digit',minute:'2-digit'})}${me&&!isGlobal?tickHtml(m):''}</span></div>`}).join(''):'<p class="muted">Пока тишина. Напиши первое сообщение!</p>';
+  log.querySelectorAll('[data-cimg]').forEach(el=>{el.onclick=()=>el.src&&openLightbox(el.src);if(!el.getAttribute('src'))hydrateChatImg(el).then(()=>{if(stick)log.scrollTop=log.scrollHeight})});
+  if(stick||msgs.length<=1)log.scrollTop=log.scrollHeight;
+ };
+ const load=async()=>{if(!document.getElementById('chatLog')||tab!=='Чаты')return stopChat();try{const d=await api(base);draw(d.messages);const pe=document.getElementById('chatPres');if(pe&&d.peer)pe.innerHTML=presHtml(d.peer)}catch(e){log.innerHTML='<div class="auth-error">'+esc(e.message)+'</div>';chatSig='';stopChat()}};
+ const showPrev=()=>{const p=document.getElementById('chatPrev');p.classList.toggle('hide',!pending);if(pending)p.querySelector('img').src=pending};
+ const attach=async f=>{try{pending=await prepChatImage(f);showPrev()}catch(e){alert(e.message)}};
+ const send=async()=>{const ta=document.getElementById('chatText'),text=ta.value.trim();if(!text&&!pending)return;const btn=document.getElementById('chatSend');btn.disabled=true;try{const sent=await api(base,pending?{text,image:pending}:{text});if(pending&&sent.message)chatImgCache.set(sent.message.id,pending);pending='';showPrev();ta.value='';await load();log.scrollTop=log.scrollHeight}catch(e){alert(e.message)}finally{btn.disabled=false;ta.focus()}};
+ document.getElementById('chatBack').onclick=()=>openChat({t:'list'});
+ const fr=document.getElementById('chatFriend');if(fr)fr.onclick=async()=>{try{await api('/friends/add',{login:chatView.login});fr.textContent='В друзьях ✓';fr.disabled=true}catch(e){alert(e.message)}};
+ document.getElementById('chatSend').onclick=send;
+ const fi=document.getElementById('chatFile');document.getElementById('chatAttach').onclick=()=>fi.click();
+ fi.onchange=()=>{const f=fi.files[0];fi.value='';if(f)attach(f)};
+ document.getElementById('chatPrevX').onclick=()=>{pending='';showPrev()};
+ document.getElementById('chatText').onpaste=e=>{const f=[...(e.clipboardData&&e.clipboardData.files||[])].find(x=>x.type.startsWith('image/'));if(f){e.preventDefault();attach(f)}};
+ let lastTyping=0;
+ document.getElementById('chatText').oninput=e=>{if(isGlobal||!e.target.value.trim()||Date.now()-lastTyping<2500)return;lastTyping=Date.now();api(base+'/typing',{}).catch(()=>{})};
+ document.getElementById('chatText').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send()}};
+ if(!isGlobal)api('/notifications/read',{key:'dm:'+chatView.login.toLowerCase()}).catch(()=>{});
+ load();chatTimer=setInterval(load,3000);
+}
+
+/* ---------- Сойн, уведомления, торговая площадка, профили, автообновление ---------- */
+let notifs=[],lastUnread=0,notifsLoaded=false,mktSel='',mktSig='',profLogin='',profBack='Главная',polling=false,thumbBusy=false,toastT=null;
+const fmt=n=>Number(n||0).toLocaleString('ru-RU');
+function setCoins(n){
+ coins=(n===undefined)?null:n;
+ const c=document.getElementById('coinChip'),b=document.getElementById('bellBtn');if(!c)return;
+ const on=serverAccount()&&coins!==null;
+ c.classList.toggle('hide',!on);b.classList.toggle('hide',!serverAccount());
+ if(on)c.textContent='◈ '+fmt(coins)+' '+COIN;
+ const mb=document.getElementById('mBal');if(mb&&on)mb.textContent=fmt(coins);
+}
+function setBadge(n){const b=document.getElementById('bellBadge');b.textContent=n>9?'9+':n;b.classList.toggle('hide',!n)}
+function toast(html,sticky){const t=document.getElementById('toast');t.innerHTML=html;t.classList.remove('hide');clearTimeout(toastT);if(!sticky)toastT=setTimeout(()=>t.classList.add('hide'),4500)}
+function applyArtworks(d){if(Array.isArray(d.artworks))localStorage.setItem(getKEY(),JSON.stringify(d.artworks));if(typeof d.rev==='number')knownRev=d.rev}
+
+/* Миниатюра для рынка и профилей: большие картинки по сети не гоняем */
+function makeThumb(src){return new Promise(res=>{const i=new Image();i.onload=()=>{try{const s=Math.min(1,480/Math.max(i.width,i.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(i.width*s));c.height=Math.max(1,Math.round(i.height*s));const x=c.getContext('2d');x.fillStyle='#11121D';x.fillRect(0,0,c.width,c.height);x.drawImage(i,0,0,c.width,c.height);res(c.toDataURL('image/jpeg',0.72))}catch(e){res('')}};i.onerror=()=>res('');i.src=src})}
+async function backfillThumbs(){
+ if(thumbBusy||!serverAccount())return;
+ const need=read(getKEY()).filter(x=>x.image&&x.thumb===undefined);if(!need.length)return;
+ thumbBusy=true;
+ try{const m=new Map();for(const x of need)m.set(x.id,await makeThumb(x.image));
+  const fresh=read(getKEY());fresh.forEach(x=>{if(x.thumb===undefined&&m.has(x.id))x.thumb=m.get(x.id)});
+  localStorage.setItem(getKEY(),JSON.stringify(fresh));syncToServer();
+ }finally{thumbBusy=false}
+}
+
+/* Уведомления */
+async function loadNotifs(){
+ const d=await api('/notifications');
+ const seen=new Set(notifs.map(n=>n.id+n.at)),was=notifsLoaded;
+ notifs=d.notifications;notifsLoaded=true;
+ if(was){
+  const fresh=notifs.filter(n=>!n.read&&!seen.has(n.id+n.at));
+  const open=(chatView.t==='dm'&&tab==='Чаты')?chatView.login.toLowerCase():null;
+  const quiet=n=>open&&n.type==='dm'&&n.link&&String(n.link.login).toLowerCase()===open;
+  if(fresh.some(quiet)){api('/notifications/read',{key:'dm:'+open}).catch(()=>{});notifs.forEach(n=>{if(quiet(n))n.read=true})}
+  const real=fresh.filter(n=>!quiet(n));
+  if(real.length)toast('🔔 '+esc(real[0].text)+(real.length>1?' <small>и ещё '+(real.length-1)+'</small>':''));
+ }
+ lastUnread=notifs.filter(n=>!n.read).length;setBadge(lastUnread);
+ if(!document.getElementById('notifPanel').classList.contains('hide'))drawNotifPanel();
+}
+function followLink(l){if(!l)return;if(l.tab==='dm')return openChat({t:'dm',login:l.login,name:l.name});if(l.tab==='Игрок')return openProfile(l.login);go(l.tab)}
+function drawNotifPanel(){
+ const p=document.getElementById('notifPanel');
+ p.innerHTML=notifs.length?notifs.map((n,i)=>`<button class="notif-item ${n.read?'':'new'}" data-n="${i}">${esc(n.text)}<small>${new Date(n.at).toLocaleString('ru-RU',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'})}</small></button>`).join(''):'<p class="muted" style="padding:10px">Уведомлений пока нет.</p>';
+ p.querySelectorAll('[data-n]').forEach(b=>b.onclick=()=>{p.classList.add('hide');followLink(notifs[b.dataset.n].link)});
+}
+
+/* Автообновление: баланс, уведомления, смена NFT с другого устройства, новая версия приложения */
+async function refreshAccount(){
+ try{const r=await fetch('/api/auth/me',{headers:{'Authorization':'Bearer '+authToken}});if(!r.ok)return;const d=await r.json();
+  applyAccountSession(d.user,authToken,d.data);
+  const a=document.activeElement;
+  if(['Галерея','Главная','Витрина'].includes(tab)&&!(a&&a.matches&&a.matches('input,textarea,select')))render();
+ }catch(e){}
+}
+function onNewVersion(v){
+ const typing=[...document.querySelectorAll('textarea,input,select')].some(i=>i.type!=='file'&&(i.value||document.activeElement===i));
+ let tried='';try{tried=sessionStorage.getItem('crystalis_reload_ver')||''}catch(e){}
+ if(!typing&&tried!==v){try{sessionStorage.setItem('crystalis_reload_ver',v)}catch(e){}location.reload();return}
+ toast('✦ Вышла новая версия CRYSTALIS <button id="doReload">Обновить</button>',true);
+ const b=document.getElementById('doReload');if(b)b.onclick=()=>location.reload();
+}
+async function poll(force){
+ if(!serverAccount()||polling||(document.hidden&&!force))return;
+ polling=true;
+ try{
+  const d=await api('/poll');
+  setCoins(d.coins);
+  if(d.version&&d.version!==CLIENT_VERSION)return onNewVersion(d.version);
+  const changed=knownRev!==null&&d.rev!==knownRev;knownRev=d.rev;
+  if(changed)await refreshAccount();
+  if(d.unread>0||lastUnread>0||!notifsLoaded)await loadNotifs();else setBadge(0);
+  backfillThumbs();
+ }catch(e){}finally{polling=false}
+}
+
+/* Торговая площадка */
+function lotCard(l,mine){return `<article class="work lot">${l.image?`<img src="${l.image}" alt="">`:'<div class="ph">◇</div>'}<div class="info"><strong>${esc(l.title)}</strong><small>${esc(l.category)} · ${esc(l.rarity)}</small><div class="price">◈ ${fmt(l.price)} ${COIN}</div><small class="seller" data-prof="${esc(l.seller)}">@${esc(l.seller)}</small>${mine?`<button class="btn ghost" data-cancel="${esc(l.id)}">Снять с продажи</button>`:`<button class="btn" data-buy="${esc(l.id)}" data-t="${esc(l.title)}" data-p="${l.price}">Купить</button>`}</div></article>`}
+function bindLots(root,after){
+ root.querySelectorAll('[data-buy]').forEach(b=>b.onclick=async()=>{
+  if(!confirm(`Купить «${b.dataset.t}» за ${fmt(b.dataset.p)} ${COIN}?`))return;
+  b.disabled=true;
+  try{const d=await api('/market/buy',{id:b.dataset.buy});setCoins(d.coins);applyArtworks(d);alert('Покупка завершена! NFT «'+d.title+'» теперь в твоей галерее.')}catch(e){alert(e.message)}
+  after();
+ });
+ root.querySelectorAll('[data-cancel]').forEach(b=>b.onclick=async()=>{
+  b.disabled=true;
+  try{applyArtworks(await api('/market/cancel',{id:b.dataset.cancel}))}catch(e){alert(e.message)}
+  after();
+ });
+}
+function bazaar(){
+ if(!serverAccount())return shell('Торговая площадка','Покупай и продавай NFT за '+COIN+'.','<div class="notice">Торговая площадка работает с аккаунтом на сервере. Войди или зарегистрируйся во вкладке «Профиль».</div><button class="btn" data-go="Профиль">Перейти в профиль</button>');
+ const arts=read(getKEY());
+ shell('Торговая площадка','Выставляй свои NFT на продажу и покупай чужие за '+COIN+'.',`
+ <div class="statrow"><div class="stat"><b id="mBal">${coins===null?'…':fmt(coins)}</b><span>${COIN.toUpperCase()} НА СЧЁТЕ</span></div><div class="stat"><b id="mMine">0</b><span>МОИХ ЛОТОВ</span></div></div>
+ <h2 class="eyebrow">ВЫСТАВИТЬ NFT НА ПРОДАЖУ</h2>
+ <div class="panel">${arts.length?`<div class="field"><label>Твоя работа</label><select id="sellArt">${arts.map(a=>`<option value="${esc(a.id)}" ${String(a.id)===String(mktSel)?'selected':''}>${esc(a.title)}</option>`).join('')}</select></div><div class="field"><label>Цена, ${COIN}</label><input id="sellPrice" type="number" min="1" max="1000000" step="1" placeholder="Например, 25"></div><button class="btn" id="sellBtn">Выставить на продажу</button><div class="notice">Работа переедет из галереи на площадку. Её можно снять с продажи в любой момент — она вернётся к тебе.</div>`:'<p class="muted">В галерее пока нет работ, которые можно продать.</p><button class="btn secondary" data-go="Создать">Создать работу</button>'}</div>
+ <h2 class="eyebrow">ПЕРЕВОД СОЙН УЧАСТНИКУ</h2>
+ <div class="panel">
+  <div class="row">
+   <input id="trLogin" placeholder="Логин получателя">
+   <input id="trAmt" type="number" min="1" max="1000000" placeholder="Сумма Сойн">
+  </div>
+  <button class="btn secondary" id="trBtn">Перевести Сойн</button>
+ </div>
+ <h2 class="eyebrow">ЛОТЫ НА ПЛОЩАДКЕ</h2><div id="mktList"><div class="empty">Загрузка…</div></div>`);
+ const trb=document.getElementById('trBtn');
+ if(trb)trb.onclick=async()=>{
+  const to=document.getElementById('trLogin').value.trim(),amount=Number(document.getElementById('trAmt').value);
+  if(!to||!(amount>=1))return alert('Укажи логин и сумму.');
+  trb.disabled=true;
+  try{const d=await api('/coins/transfer',{to,amount});setCoins(d.coins);document.getElementById('trAmt').value='';alert('Перевод выполнен!')}catch(e){alert(e.message)}
+  finally{trb.disabled=false}
+ };
+ const sb=document.getElementById('sellBtn');
+ if(sb)sb.onclick=async()=>{
+  const id=document.getElementById('sellArt').value,price=Number(document.getElementById('sellPrice').value);
+  if(!(price>=1))return alert('Укажи цену — минимум 1 '+COIN+'.');
+  const art=read(getKEY()).find(a=>String(a.id)===id);if(!art)return;
+  sb.disabled=true;sb.textContent='Публикуем…';
+  try{const thumb=art.image?await makeThumb(art.image):'';applyArtworks(await api('/market/list',{artworkId:id,price,thumb}));mktSel='';alert('NFT выставлен на продажу!');bazaar()}
+  catch(e){alert(e.message);sb.disabled=false;sb.textContent='Выставить на продажу'}
+ };
+ mktSig='';
+ const loadList=async()=>{
+  const box=document.getElementById('mktList');if(!box||tab!=='Рынок')return stopChat();
+  try{const d=await api('/market');setCoins(d.coins);
+   const sig=d.listings.map(l=>l.id+':'+l.price).join();if(sig===mktSig)return;mktSig=sig;
+   const me=currentUser.login.toLowerCase();
+   document.getElementById('mMine').textContent=d.listings.filter(l=>l.seller.toLowerCase()===me).length;
+   box.innerHTML=d.listings.length?`<div class="work-grid">${d.listings.map(l=>lotCard(l,l.seller.toLowerCase()===me)).join('')}</div>`:'<div class="empty">Лотов пока нет. Будь первым — выставь свой NFT!</div>';
+   bindLots(box,()=>bazaar());
+  }catch(e){box.innerHTML='<div class="auth-error">'+esc(e.message)+'</div>'}
+ };
+ loadList();chatTimer=setInterval(loadList,5000);
+}
+
+/* Профиль другого участника */
+function openProfile(login){
+ if(!serverAccount()){alert('Войди в аккаунт, чтобы смотреть профили.');return}
+ if(tab!=='Игрок')profBack=tab;profLogin=login;go('Игрок');
+}
+function playerPage(){
+ if(!serverAccount()||!profLogin)return home();
+ shell('Профиль участника','Имя и коллекция NFT.','<div id="profBox"><div class="empty">Загрузка…</div></div>');
+ const box=document.getElementById('profBox');
+ const draw=async()=>{
+  try{
+   const d=await api('/profile/'+encodeURIComponent(profLogin)),u=d.user;
+   box.innerHTML=`<button class="btn ghost" id="profBack">← Назад</button>
+   <div class="panel"><div class="mentor-head"><div class="mentor-avatar">${initial(u.name)}</div><div style="flex:1"><strong style="font-size:18px">${esc(u.name)}</strong><p class="muted" style="margin:3px 0 0">@${esc(u.login)} · на платформе с ${new Date(u.createdAt).toLocaleDateString('ru-RU')}</p><div style="margin-top:4px">${u.self?'<span class="pres on">в сети</span>':presHtml(u)}</div></div></div>
+   <div class="statrow" style="margin-top:12px"><div class="stat"><b>${d.artworks.length}</b><span>NFT</span></div><div class="stat"><b>${d.listings.length}</b><span>НА ПРОДАЖЕ</span></div></div>
+   ${u.self?'':`<div class="row" style="margin-top:6px"><button class="btn secondary" id="profMsg">Написать</button>${u.isFriend?'<button class="btn ghost" disabled>В друзьях ✓</button>':'<button class="btn" id="profFriend">＋ В друзья</button>'}</div>`}</div>
+   <h2 class="eyebrow">NFT</h2>${d.artworks.length?`<div class="work-grid">${d.artworks.map(a=>`<article class="work lot">${a.image?`<img src="${a.image}" alt="">`:'<div class="ph">◇</div>'}<div class="info"><strong>${esc(a.title)}</strong><small>${esc(a.category)} · ${esc(a.rarity)}</small></div></article>`).join('')}</div>`:'<div class="empty">У этого участника пока нет NFT</div>'}
+   ${d.listings.length?`<h2 class="eyebrow">НА ПРОДАЖЕ</h2><div class="work-grid">${d.listings.map(l=>lotCard(l,u.self)).join('')}</div>`:''}`;
+   document.getElementById('profBack').onclick=()=>go(profBack);
+   const m=document.getElementById('profMsg');if(m)m.onclick=()=>openChat({t:'dm',login:u.login,name:u.name});
+   const f=document.getElementById('profFriend');if(f)f.onclick=async()=>{f.disabled=true;try{await api('/friends/add',{login:u.login});draw()}catch(e){alert(e.message);f.disabled=false}};
+   bindLots(box,()=>draw());
+  }catch(e){box.innerHTML='<button class="btn ghost" id="profBack">← Назад</button><div class="auth-error">'+esc(e.message)+'</div>';document.getElementById('profBack').onclick=()=>go(profBack)}
+ };
+ draw();
+}
+
+/* Общие обработчики: профили по клику на имя, «Продать» в галерее, колокольчик, баланс, скрываемое меню */
+document.addEventListener('click',e=>{
+ const p=e.target.closest('[data-prof]');if(p&&p.dataset.prof&&!p.disabled)openProfile(p.dataset.prof);
+ const s=e.target.closest('[data-sell]');if(s){mktSel=s.dataset.sell;go('Рынок')}
+ const panel=document.getElementById('notifPanel');
+ if(!panel.classList.contains('hide')&&!panel.contains(e.target)&&!e.target.closest('#bellBtn'))panel.classList.add('hide');
+});
+document.getElementById('coinChip').onclick=()=>go('Рынок');
+document.getElementById('bellBtn').onclick=()=>{
+ const p=document.getElementById('notifPanel');
+ if(!p.classList.contains('hide')){p.classList.add('hide');return}
+ drawNotifPanel();p.classList.remove('hide');document.getElementById('toast').classList.add('hide');
+ if(notifs.some(n=>!n.read)){api('/notifications/read',{}).then(()=>{notifs.forEach(n=>n.read=true);lastUnread=0;setBadge(0)}).catch(()=>{})}
+};
+const navBtn=document.getElementById('navToggle');
+function applyNav(c){document.body.classList.toggle('nav-collapsed',c);navBtn.textContent=c?'›':'‹';navBtn.title=c?'Показать меню':'Скрыть меню';try{localStorage.setItem('crystalis_nav_collapsed',c?'1':'0')}catch(e){}}
+navBtn.onclick=()=>applyNav(!document.body.classList.contains('nav-collapsed'));
+applyNav(window.innerWidth<=768?true:(()=>{try{return localStorage.getItem('crystalis_nav_collapsed')==='1'}catch(e){return false}})());
+setInterval(poll,5000);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll(true)});
+setTimeout(()=>poll(true),300);
+
+
+/* ---------- Мини-игры: Crystalis Jump и Уровни Сойн ---------- */
+let gameLoopId=null;
+function stopGameLoop(){if(gameLoopId){cancelAnimationFrame(gameLoopId);gameLoopId=null}}
+function gamesPage(){
+ stopGameLoop();
+ const gs=(currentUser&&currentUser.gameStats)||{jumpBest:0,levelsCleared:0,coinsEarned:0};
+ shell('Игровой центр CRYSTALIS','Играй в аркады и зарабатывай Сойн за рекорды и пройденные уровни.',`
+  <div class="statrow">
+   <div class="stat"><b>${gs.jumpBest||0}</b><span>РЕКОРД JUMP</span></div>
+   <div class="stat"><b>${gs.levelsCleared||0}</b><span>УРОВНЕЙ ПРОЙДЕНО</span></div>
+   <div class="stat"><b>${gs.coinsEarned||0}</b><span>ЗАРАБОТАНО ${COIN.toUpperCase()}</span></div>
+  </div>
+  <div class="row" style="margin-top:14px">
+   <button class="btn" id="btnStartJump">🚀 Crystalis Jump</button>
+   <button class="btn secondary" id="btnStartLevels">💎 Кристальный лабиринт (Уровни)</button>
+  </div>
+  <div id="gameContainer" class="panel" style="margin-top:14px">
+   <p class="muted" style="text-align:center">Выбери игру выше, чтобы начать и заработать Сойн!</p>
+  </div>
+ `);
+ document.getElementById('btnStartJump').onclick=startCrystalisJump;
+ document.getElementById('btnStartLevels').onclick=startCrystalLevels;
+}
+
+function startCrystalisJump(){
+ stopGameLoop();
+ const box=document.getElementById('gameContainer');
+ box.innerHTML=`
+  <div style="display:flex;justify-content:space-between;align-items:center">
+   <strong>🚀 Crystalis Jump</strong>
+   <span class="pill" id="jumpScorePill">Счёт: 0</span>
+  </div>
+  <p class="muted" style="font-size:12px">Управляй стрелками ◀ ▶ или нажимай на левую/правую половину экрана. Прыгай по платформам и собирай кристаллы!</p>
+  <canvas id="jumpCanvas" class="game-canvas" width="340" height="460"></canvas>
+  <button class="btn ghost" id="jumpRestart">Начать заново</button>
+ `;
+ const cv=document.getElementById('jumpCanvas'),ctx=cv.getContext('2d');
+ let player={x:155,y:380,w:28,h:28,vx:0,vy:-10};
+ let plats=[],score=0,alive=true,keys={left:false,right:false};
+ for(let i=0;i<8;i++)plats.push({x:Math.random()*270,y:440-i*62,w:68,h:12,gem:i%2===1});
+ plats[0]={x:135,y:430,w:75,h:12,gem:false};
+
+ const onKey=(e,st)=>{if(e.key==='ArrowLeft'||e.key==='a')keys.left=st;if(e.key==='ArrowRight'||e.key==='d')keys.right=st};
+ window.onkeydown=e=>onKey(e,true);window.onkeyup=e=>onKey(e,false);
+ cv.onpointerdown=e=>{const r=cv.getBoundingClientRect();if(e.clientX-r.left<r.width/2)keys.left=true;else keys.right=true};
+ cv.onpointerup=()=>{keys.left=false;keys.right=false};
+
+ async function endJump(){
+  alive=false;
+  const reward=Math.min(25,Math.floor(score/150));
+  ctx.fillStyle='rgba(13,14,23,0.85)';ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.fillStyle='#fff';ctx.font='bold 22px sans-serif';ctx.textAlign='center';
+  ctx.fillText('Игра окончена!',170,190);
+  ctx.font='16px sans-serif';ctx.fillStyle='#B99AFF';
+  ctx.fillText('Счёт: '+score+' · Награда: +'+reward+' '+COIN,170,225);
+  if(serverAccount()&&(reward>0||score>0)){
+   try{const d=await api('/game/reward',{coins:reward,score,level:0});setCoins(d.coins);currentUser.gameStats=d.gameStats;localStorage.setItem(USER_KEY,JSON.stringify(currentUser))}catch(e){}
+  }
+ }
+
+ function loop(){
+  if(!alive||!document.getElementById('jumpCanvas'))return;
+  ctx.clearRect(0,0,cv.width,cv.height);
+  if(keys.left)player.vx=-4.5;else if(keys.right)player.vx=4.5;else player.vx*=0.82;
+  player.x+=player.vx;
+  if(player.x<-14)player.x=cv.width-14;if(player.x>cv.width-14)player.x=-14;
+  player.vy+=0.34;player.y+=player.vy;
+
+  if(player.y<200){
+   const dy=200-player.y;player.y=200;score+=Math.floor(dy);
+   document.getElementById('jumpScorePill').textContent='Счёт: '+score;
+   plats.forEach(p=>{p.y+=dy;if(p.y>cv.height){p.y=0;p.x=Math.random()*270;p.gem=Math.random()<0.4}});
+  }
+  plats.forEach(p=>{
+   ctx.fillStyle='#8B5CF6';ctx.fillRect(p.x,p.y,p.w,p.h);
+   if(p.gem){ctx.fillStyle='#F5D06B';ctx.beginPath();ctx.arc(p.x+p.w/2,p.y-10,6,0,Math.PI*2);ctx.fill();}
+   if(player.vy>0&&player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>=p.y&&player.y+player.h<=p.y+p.h+10){
+    player.vy=-10.5;
+    if(p.gem){p.gem=false;score+=50;document.getElementById('jumpScorePill').textContent='Счёт: '+score}
+   }
+  });
+  ctx.fillStyle='#E9D5FF';ctx.beginPath();ctx.moveTo(player.x+14,player.y);ctx.lineTo(player.x+28,player.y+14);ctx.lineTo(player.x+14,player.y+28);ctx.lineTo(player.x,player.y+14);ctx.closePath();ctx.fill();
+  if(player.y>cv.height)return endJump();
+  gameLoopId=requestAnimationFrame(loop);
+ }
+ document.getElementById('jumpRestart').onclick=startCrystalisJump;
+ loop();
+}
+
+function startCrystalLevels(){
+ stopGameLoop();
+ const gs=(currentUser&&currentUser.gameStats)||{levelsCleared:0};
+ let lvl=(gs.levelsCleared||0)+1;
+ const box=document.getElementById('gameContainer');
+ const target=lvl*5;
+ let collected=0,timeLeft=15+lvl*2;
+ box.innerHTML=`
+  <div style="display:flex;justify-content:space-between;align-items:center">
+   <strong>💎 Уровень ${lvl}</strong>
+   <span class="pill" id="lvlStatus">Собрано: 0 / ${target} · ${timeLeft}с</span>
+  </div>
+  <p class="muted" style="font-size:12px">Нажимай на появляющиеся кристаллы до истечения таймера! Награда за уровень: +${Math.min(30,lvl*5)} ${COIN}.</p>
+  <div id="lvlArena" style="position:relative;height:280px;background:#11121D;border:1px solid var(--purple);border-radius:14px;overflow:hidden;margin:10px 0"></div>
+ `;
+ const arena=document.getElementById('lvlArena');
+ function spawnGem(){
+  if(!document.getElementById('lvlArena'))return;
+  arena.innerHTML='';
+  const g=document.createElement('button');
+  g.textContent='◈';
+  g.style.cssText=`position:absolute;left:${10+Math.random()*75}%;top:${10+Math.random()*70}%;font-size:28px;background:#2A2340;border:2px solid #B99AFF;color:#F5D06B;border-radius:50%;width:48px;height:48px`;
+  g.onclick=async()=>{
+   collected++;
+   document.getElementById('lvlStatus').textContent=`Собрано: ${collected} / ${target} · ${timeLeft}с`;
+   if(collected>=target){
+    clearInterval(tInt);
+    const reward=Math.min(30,lvl*5);
+    arena.innerHTML=`<div style="padding:40px 15px;text-align:center"><h3>🎉 Уровень ${lvl} пройден!</h3><p class="muted">Награда: +${reward} ${COIN}</p><button class="btn" id="nextLvlBtn">Следующий уровень</button></div>`;
+    if(serverAccount()){
+     try{const d=await api('/game/reward',{coins:reward,score:0,level:lvl});setCoins(d.coins);currentUser.gameStats=d.gameStats;localStorage.setItem(USER_KEY,JSON.stringify(currentUser))}catch(e){}
+    }
+    document.getElementById('nextLvlBtn').onclick=startCrystalLevels;
+   }else spawnGem();
+  };
+  arena.appendChild(g);
+ }
+ spawnGem();
+ const tInt=setInterval(()=>{
+  if(!document.getElementById('lvlArena'))return clearInterval(tInt);
+  timeLeft--;
+  document.getElementById('lvlStatus').textContent=`Собрано: ${collected} / ${target} · ${timeLeft}с`;
+  if(timeLeft<=0){
+   clearInterval(tInt);
+   arena.innerHTML=`<div style="padding:40px 15px;text-align:center"><h3>⏰ Время вышло!</h3><button class="btn" id="retryLvlBtn">Попробовать снова</button></div>`;
+   document.getElementById('retryLvlBtn').onclick=startCrystalLevels;
+  }
+ },1000);
+}
+
+/* ---------- Многоуровневые достижения (по 5 этапов каждое) ---------- */
+function achievementsPage(){
+ const works=read(getKEY()).length;
+ const cols=read(getCKEY()).length;
+ const doneLessons=learningData().done.length;
+ const gs=(currentUser&&currentUser.gameStats)||{jumpBest:0,levelsCleared:0,coinsEarned:0};
+ const bal=coins||0;
+
+ const tracks=[
+  {title:'Цифровой творец',desc:'Создавай NFT-работы в своей галерее',val:works,steps:[1,3,5,10,20]},
+  {title:'Куратор коллекций',desc:'Объединяй работы в тематические коллекции',val:cols,steps:[1,2,4,7,10]},
+  {title:'Магистр Академии',desc:'Проходи сложные уроки по блокчейну и криптографии',val:doneLessons,steps:[1,3,5,7,9]},
+  {title:'Покоритель вершин (Jump)',desc:'Набирай очки в игре Crystalis Jump',val:gs.jumpBest||0,steps:[200,600,1200,2500,5000]},
+  {title:'Искатель кристаллов (Уровни)',desc:'Проходи уровни в Кристальном лабиринте',val:gs.levelsCleared||0,steps:[1,3,5,10,15]},
+  {title:'Магнат Сойн',desc:'Накопи капитал внутренней валюты Сойн',val:bal,steps:[150,300,600,1200,2500]}
+ ];
+
+ shell('Достижения CRYSTALIS','Каждое достижение имеет 5 уровней прогресса.',tracks.map(tr=>{
+  let stage=0;tr.steps.forEach(s=>{if(tr.val>=s)stage++});
+  const next=tr.steps[Math.min(4,stage)];
+  const pct=Math.min(100,Math.round((tr.val/next)*100));
+  return `<div class="ach-card">
+   <div style="display:flex;justify-content:space-between;align-items:center">
+    <strong>${esc(tr.title)}</strong>
+    <span class="ach-tier">Этап ${stage} / 5</span>
+   </div>
+   <p class="muted" style="margin:6px 0">${esc(tr.desc)} (Текущий прогресс: ${tr.val} / ${next})</p>
+   <div class="progress-track"><div class="progress-fill" style="width:${pct}%"></div></div>
+   <div>${tr.steps.map((s,idx)=>`<span class="pill" style="${tr.val>=s?'background:#4C1D95;color:#fff':''}">${idx+1} ур: ${s}</span>`).join('')}</div>
+  </div>`;
+ }).join(''));
+}
+
+const NAV_ICONS={
+'Главная':['#A78BFA','<path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>'],
+'Создать':['#F0ABFC','<path d="M12 3l2.3 6.2L21 11.5l-6.7 2.3L12 20l-2.3-6.2L3 11.5l6.7-2.3z"/>'],
+'Галерея':['#67E8F9','<rect x="3" y="4" width="18" height="16" rx="2.5"/><circle cx="9" cy="10" r="1.7"/><path d="M3 17l5-4 4 3 3-2.5 6 4.5"/>'],
+'Рынок':['#FCD34D','<path d="M4 8h16l-1.2 12H5.2z"/><path d="M9 8V7a3 3 0 0 1 6 0v1"/>'],
+'Игры':['#86EFAC','<rect x="2.5" y="7" width="19" height="11" rx="5.5"/><path d="M7.5 10.5v4M5.5 12.5h4"/><circle cx="15.5" cy="11.5" r=".9"/><circle cx="18" cy="13.7" r=".9"/>'],
+'Достижения':['#FBBF24','<path d="M8 4h8v5a4 4 0 0 1-8 0z"/><path d="M8 6H4v1a3.5 3.5 0 0 0 4 3.4M16 6h4v1a3.5 3.5 0 0 1-4 3.4"/><path d="M12 13v4M8.5 20h7M9.5 17h5"/>'],
+'Обучение':['#7DD3FC','<path d="M3 5.5C5.6 4 9 4.2 12 6.3c3-2.1 6.4-2.3 9-.8V19c-2.6-1.5-6-1.3-9 .8-3-2.1-6.4-2.3-9-.8z"/><path d="M12 6.3v13.5"/>'],
+'Наставник':['#C4B5FD','<rect x="4" y="8.5" width="16" height="11" rx="3.5"/><path d="M12 8.5V5.5"/><circle cx="12" cy="4.3" r="1.2"/><circle cx="9" cy="13.5" r="1"/><circle cx="15" cy="13.5" r="1"/><path d="M9.5 17h5"/>'],
+'Чаты':['#F9A8D4','<path d="M4 5h16v11H10l-4.5 4v-4H4z"/><path d="M8 9.5h8M8 12.5h5"/>'],
+'Профиль':['#A5B4FC','<circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/>'],
+'Разработчик':['#FCA5A5','<circle cx="12" cy="12" r="3.2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1"/>']
+};
+function navIcon(k){const i=NAV_ICONS[k];return i?`<span class="ni" style="color:${i[0]}"><svg viewBox="0 0 24 24" aria-hidden="true">${i[1]}</svg></span>`:''}
+function go(t){tab=t;if(window.innerWidth<=768)applyNav(true);render()}
+function render(){stopChat();stopGameLoop();const pages={'Игры':gamesPage,'Достижения':achievementsPage,'Рынок':bazaar,'Игрок':playerPage,'Чаты':chats,'Главная':home,'Создать':creator,'Галерея':gallery,'Коллекции':collections,'Студия ИИ':ai,'Обучение':learn,'Наставник':mentor,'Блокчейн':blockchain,'Витрина':market,'Профиль':profile,'Разработчик':devPanel};(pages[tab]||home)();const items=[['Главная','Главная'],['Создать','Создать'],['Галерея','Галерея'],['Рынок','Рынок'],['Игры','Игры'],['Достижения','Достижения'],['Обучение','Обучение'],['Наставник','Наставник'],['Чаты','Чаты'],['Профиль','Профиль']];if(currentUser&&currentUser.role==='developer')items.push(['Разработчик','Админ']);document.getElementById('nav').innerHTML=items.map(([k,v])=>`<button class="${tab===k?'active':''}" data-tab="${k}">${navIcon(k)}<span class="nl">${v}</span></button>`).join('');document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>go(b.dataset.tab))}
+updateHeaderUser();
+render();
+if(authToken&&!authToken.startsWith('local_token_')){
+ fetch('/api/auth/me',{headers:{'Authorization':'Bearer '+authToken}})
+  .then(r=>r.ok?r.json():Promise.reject())
+  .then(d=>{applyAccountSession(d.user,authToken,d.data);render();})
+  .catch(()=>{clearAccountSession();render();});
+}
+
+(function startCrystalisIntro(){
+const intro=document.getElementById('crystalisIntro');if(!intro)return;
+const cv=document.getElementById('introCanvas');if(!cv)return;
+const ctx=cv.getContext('2d');
+let raf=0,done=false,W=0,H=0,dpr=1,S=1,cx=0,cy=0;
+const finish=()=>{if(done)return;done=true;cancelAnimationFrame(raf);window.removeEventListener('resize',resize);intro.classList.add('out');setTimeout(()=>intro.remove(),850);};
+const skip=document.getElementById('skipIntro');if(skip)skip.addEventListener('click',finish,{once:true});
+
+let seed=23;const rnd=()=>{seed=(seed*9301+49297)%233280;return seed/233280;};
+const clamp=(x,a=0,b=1)=>Math.max(a,Math.min(b,x));
+const easeIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+
+/* ---- Кристалл: двусторонний гексагональный, в координатах -112…112 ---- */
+const TOP=[0,-112],BOT=[0,112],XS=[-44,-15,15,44],YT=-50,YB=50;
+const facets=[];
+for(let i=0;i<3;i++){
+  const base=[38,50,62][i];
+  facets.push({p:[TOP,[XS[i],YT],[XS[i+1],YT]],l:base+8});
+  facets.push({p:[[XS[i],YT],[XS[i+1],YT],[XS[i],YB]],l:base+3});
+  facets.push({p:[[XS[i+1],YT],[XS[i+1],YB],[XS[i],YB]],l:base-3});
+  facets.push({p:[[XS[i],YB],[XS[i+1],YB],BOT],l:base-9});
+}
+const N=3,shards=[];
+facets.forEach(f=>{
+  const [A,B,C]=f.p;
+  const P=(i,j)=>[A[0]+(B[0]-A[0])*i/N+(C[0]-A[0])*j/N,A[1]+(B[1]-A[1])*i/N+(C[1]-A[1])*j/N];
+  const add=(a,b,c)=>{
+    const tx=(a[0]+b[0]+c[0])/3,ty=(a[1]+b[1]+c[1])/3;
+    shards.push({
+      pts:[[a[0]-tx,a[1]-ty],[b[0]-tx,b[1]-ty],[c[0]-tx,c[1]-ty]],tx,ty,
+      h:188+(tx+44)/88*112,            // циан → фиолетовый → маджента
+      l:clamp(f.l+(rnd()-.5)*10,28,72),
+      delay:rnd()*1900,dur:1400+rnd()*800,
+      ang:rnd()*Math.PI*2,distF:.25+rnd()*.55,
+      rot0:(rnd()<.5?-1:1)*(2+rnd()*4),swirl:(rnd()-.5)*90,
+      ph:rnd()*6.28
+    });
+  };
+  for(let i=0;i<N;i++)for(let j=0;j<N-i;j++){
+    add(P(i,j),P(i+1,j),P(i,j+1));
+    if(i+j<N-1)add(P(i+1,j),P(i,j+1),P(i+1,j+1));
+  }
+});
+shards.forEach(s=>s.ta=s.delay+s.dur);
+const TA=Math.max(...shards.map(s=>s.ta));   // момент, когда собран последний осколок
+const T_WORD=TA+300;
+const stars=Array.from({length:70},()=>({x:rnd(),y:rnd(),r:.4+rnd()*1.1,ph:rnd()*6.28}));
+const outline=()=>{ctx.beginPath();ctx.moveTo(TOP[0],TOP[1]);ctx.lineTo(XS[3],YT);ctx.lineTo(XS[3],YB);ctx.lineTo(BOT[0],BOT[1]);ctx.lineTo(XS[0],YB);ctx.lineTo(XS[0],YT);ctx.closePath();};
+const edges=()=>{
+  outline();
+  for(let i=1;i<3;i++){ctx.moveTo(TOP[0],TOP[1]);ctx.lineTo(XS[i],YT);ctx.lineTo(XS[i],YB);ctx.lineTo(BOT[0],BOT[1]);}
+  ctx.moveTo(XS[0],YT);ctx.lineTo(XS[3],YT);ctx.moveTo(XS[0],YB);ctx.lineTo(XS[3],YB);
+};
+
+function resize(){
+  dpr=Math.min(window.devicePixelRatio||1,2);
+  W=window.innerWidth;H=window.innerHeight;
+  cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr);
+  const ch=Math.min(H*0.36,W*0.52,300);
+  S=ch/224;cx=W/2;cy=H*0.40;
+}
+resize();window.addEventListener('resize',resize);
+
+const tri=s=>{ctx.beginPath();ctx.moveTo(s.pts[0][0],s.pts[0][1]);ctx.lineTo(s.pts[1][0],s.pts[1][1]);ctx.lineTo(s.pts[2][0],s.pts[2][1]);ctx.closePath();};
+function pos(s,e,t){
+  const D=Math.max(W,H)/S*s.distF;
+  const sx=Math.cos(s.ang)*D,sy=Math.sin(s.ang)*D;
+  const nx=-Math.sin(s.ang),ny=Math.cos(s.ang),sw=s.swirl*(1-e)*e*4;
+  const drift=(1-e)*Math.sin(t/600+s.ph)*5;
+  return [s.tx+(sx)*(1-e)+nx*sw+drift,s.ty+(sy)*(1-e)+ny*sw+drift];
+}
+
+function render(t){
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  ctx.globalCompositeOperation='source-over';ctx.globalAlpha=1;ctx.shadowBlur=0;
+  ctx.fillStyle='#030109';ctx.fillRect(0,0,W,H);
+  const fadeIn=clamp(t/700);
+  const arrived=shards.reduce((n,s)=>n+(t>=s.ta?1:0),0)/shards.length;
+  const glow=clamp((t-TA)/700),pulse=.82+.18*Math.sin(t/380);
+  const floatY=t>TA?Math.sin((t-TA)/650)*3.5:0;
+
+  // звёзды
+  ctx.fillStyle='#cdbbff';
+  stars.forEach(s=>{ctx.globalAlpha=fadeIn*(.25+.45*Math.abs(Math.sin(t/900+s.ph)));ctx.beginPath();ctx.arc(s.x*W,s.y*H,s.r,0,6.283);ctx.fill();});
+  ctx.globalAlpha=1;
+
+  // туманное свечение за кристаллом
+  const R=Math.max(W,H)*.5*S/1.2+S*150,hz=(arrived*.35+glow*.65)*pulse;
+  if(hz>0){const g=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    g.addColorStop(0,'rgba(150,90,255,'+(.42*hz)+')');g.addColorStop(.45,'rgba(70,200,255,'+(.14*hz)+')');g.addColorStop(1,'rgba(20,5,60,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);}
+
+  ctx.save();ctx.translate(cx,cy+floatY*S);ctx.scale(S,S);
+
+  // лучи после сборки
+  if(glow>0){
+    ctx.globalCompositeOperation='lighter';ctx.lineCap='round';
+    for(let i=0;i<10;i++){
+      const a=i/10*6.283+t/4000,len=(120+(i%3)*45)*glow;
+      ctx.strokeStyle='hsla('+(190+i*13)+',100%,70%,'+(.22*glow*pulse)+')';ctx.lineWidth=1.4;
+      ctx.beginPath();ctx.moveTo(Math.cos(a)*40,Math.sin(a)*40);ctx.lineTo(Math.cos(a)*len*1.3,Math.sin(a)*len*1.3);ctx.stroke();
+    }
+    ctx.globalCompositeOperation='source-over';
+  }
+
+  // осколки
+  ctx.lineJoin='round';
+  shards.forEach(s=>{
+    const p=clamp((t-s.delay)/s.dur),e=easeIO(p);
+    const flash=t>=s.ta?clamp(1-(t-s.ta)/520):0;
+    // шлейф в полёте
+    if(p>0&&p<1){
+      for(let k=1;k<=2;k++){
+        const pp=clamp(p-k*.05),ee=easeIO(pp),q=pos(s,ee,t);
+        ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(s.rot0*(1-ee));ctx.scale(1+(1-ee)*.35,1+(1-ee)*.35);
+        ctx.globalAlpha=fadeIn*(.22/k);ctx.fillStyle='hsl('+s.h+',100%,60%)';tri(s);ctx.fill();ctx.restore();
+      }
+    }
+    const q=pos(s,e,t),sc=1+(1-e)*.35;
+    ctx.save();ctx.translate(q[0],q[1]);ctx.rotate(s.rot0*(1-e));ctx.scale(sc,sc);
+    ctx.globalAlpha=fadeIn;
+    const L=Math.min(92,s.l+flash*34+(e<1?8:0));
+    ctx.fillStyle='hsla('+s.h+',100%,'+L+'%,.94)';
+    ctx.strokeStyle='hsla('+s.h+',100%,'+Math.min(90,L+26)+'%,'+(e<1?.95:.55)+')';
+    ctx.lineWidth=e<1?1.1:.7;
+    tri(s);ctx.fill();ctx.stroke();ctx.restore();
+    // вспышка-искра в месте встречи
+    if(t>=s.ta&&t-s.ta<460){
+      const k=(t-s.ta)/460,len=4+10*(1-k)*1.2;
+      ctx.save();ctx.globalCompositeOperation='lighter';ctx.globalAlpha=(1-k);ctx.strokeStyle='#e9fbff';ctx.lineWidth=1;
+      ctx.beginPath();ctx.moveTo(s.tx-len,s.ty);ctx.lineTo(s.tx+len,s.ty);ctx.moveTo(s.tx,s.ty-len);ctx.lineTo(s.tx,s.ty+len);ctx.stroke();ctx.restore();
+    }
+  });
+  ctx.globalAlpha=1;
+
+  if(t>=TA){
+    const dt=t-TA;
+    // белая вспышка при сборке
+    const f=clamp(1-dt/650);
+    if(f>0){outline();ctx.fillStyle='rgba(255,255,255,'+(.9*f)+')';ctx.fill();}
+    // бегущий блик по граням
+    if(dt>700){
+      const ph=((dt-700)%2800)/2800;
+      if(ph<.55){
+        ctx.save();outline();ctx.clip();
+        const x=-130+ph/.55*260,g=ctx.createLinearGradient(x-26,-60,x+26,60);
+        g.addColorStop(0,'rgba(255,255,255,0)');g.addColorStop(.5,'rgba(255,255,255,.5)');g.addColorStop(1,'rgba(255,255,255,0)');
+        ctx.fillStyle=g;ctx.fillRect(-60,-120,120,240);ctx.restore();
+      }
+    }
+    // неоновые рёбра
+    ctx.lineCap='round';ctx.lineJoin='round';
+    ctx.shadowBlur=22*dpr;ctx.shadowColor='#ff3df0';
+    ctx.strokeStyle='rgba(255,120,240,'+(.55*glow*pulse)+')';ctx.lineWidth=2.4;edges();ctx.stroke();
+    ctx.shadowBlur=14*dpr;ctx.shadowColor='#37f0ff';
+    ctx.strokeStyle='rgba(200,255,255,'+(.95*glow)+')';ctx.lineWidth=1.3;edges();ctx.stroke();
+    ctx.shadowBlur=0;
+    // ударная волна
+    const r=clamp(dt/1000);
+    if(r<1){ctx.globalCompositeOperation='lighter';ctx.strokeStyle='rgba(90,235,255,'+(.85*(1-r))+')';ctx.lineWidth=3*(1-r)+.4;
+      ctx.beginPath();ctx.arc(0,0,40+r*300,0,6.283);ctx.stroke();ctx.globalCompositeOperation='source-over';}
+  }
+  ctx.restore();
+}
+
+const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce){
+  render(TA+1500);intro.classList.add('show');setTimeout(finish,2600);
+}else{
+  const t0=performance.now();
+  const frame=now=>{
+    if(done)return;
+    const t=now-t0;render(t);
+    if(t>=T_WORD&&!intro.classList.contains('show'))intro.classList.add('show');
+    raf=requestAnimationFrame(frame);
+  };
+  raf=requestAnimationFrame(frame);
+  setTimeout(finish,Math.round(T_WORD+4200));
+}
+})();
+</script>
+<style>
+.pres{font-size:12px;color:#8E8FA6}.pres.on{color:#4ade80;display:inline-flex;align-items:center;gap:5px}
+.pres.on::before{content:'';width:7px;height:7px;background:#4ade80;border-radius:50%;box-shadow:0 0 6px #4ade80}
+.tg-typing{font-size:12px;color:#B99AFF;font-style:italic;display:inline-flex;align-items:center;gap:3px}
+.tg-typing i{width:4px;height:4px;border-radius:50%;background:#B99AFF;display:inline-block;animation:typingBlink 1.4s infinite both}
+.tg-typing i:nth-child(2){animation-delay:.2s}.tg-typing i:nth-child(3){animation-delay:.4s}
+@keyframes typingBlink{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
+.chat-pres{min-height:18px;margin:10px 0 2px}
+.person-row .info .pres{display:block;margin-top:1px}
+.when .tick{display:inline-block;vertical-align:-2px;margin-left:5px;line-height:0}
+.tick svg{width:17px;height:12px;fill:none;stroke:#A99FC8;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tick.read svg{stroke:#5CC8FF}
+</style>
+</body></html>

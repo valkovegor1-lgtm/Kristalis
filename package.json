@@ -1,0 +1,16 @@
+{
+  "name": "crystalis",
+  "version": "1.9.4",
+  "private": true,
+  "description": "CRYSTALIS — русская платформа цифрового искусства с экспериментальным ИИ-наставником без API-ключа",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,22 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+  included_files = ["seed/**"]
+
+[[redirects]]
+  from = "/api/mentor/status"
+  to = "/.netlify/functions/mentor-status"
+  status = 200
+
+[[redirects]]
+  from = "/api/mentor"
+  to = "/.netlify/functions/mentor"
+  status = 200
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/api/:splat"
+  status = 200
