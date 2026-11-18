@@ -146,7 +146,7 @@ function fallback(q) {
   return 'Встроенная база знаний не содержит точного ответа на этот вопрос, а подключиться к ИИ не удалось. Попробуй уточнить формулировку или спросить об NFT, блокчейне, цифровом искусстве и безопасности.';
 }
 
-function callGemini(messages, cb) {
+function callGemini(messages, cb, lang) {
   if (!GEMINI_API_KEY || GEMINI_API_KEY === 'ВАШ_API_КЛЮЧ_GEMINI') {
     return cb(new Error('API-ключ Gemini не настроен'));
   }
@@ -157,7 +157,7 @@ function callGemini(messages, cb) {
   }));
 
   const systemInstruction = {
-    parts: [{ text: 'Ты — Наставник CRYSTALIS, дружелюбный русскоязычный преподаватель. Отвечай понятно и по существу. Не выдумывай факты. Не запрашивай пароли, приватные ключи или seed-фразы.' }]
+    parts: [{ text: (lang === 'en' ? 'You are the CRYSTALIS Mentor, a friendly teacher. Always answer in English, clearly and to the point. Do not invent facts. Never ask for passwords, private keys or seed phrases.' : 'Ты — Наставник CRYSTALIS, дружелюбный русскоязычный преподаватель. Отвечай понятно и по существу. Не выдумывай факты. Не запрашивай пароли, приватные ключи или seed-фразы.') }]
   };
 
   const postData = JSON.stringify({
@@ -638,10 +638,11 @@ const server = http.createServer((req, res) => {
       const q = messages.filter(m => m.role === 'user').slice(-1)[0];
       if (!q || !q.content.trim()) return send(res, 400, { error: 'Напиши вопрос Наставнику.' });
       
+      const en = data.lang === 'en';
       callGemini(messages, (err, answer) => {
         if (!err) return send(res, 200, { answer, fallback: false });
-        send(res, 200, { answer: fallback(q.content), fallback: true });
-      });
+        send(res, 200, { answer: en ? 'The AI service did not respond. Try rephrasing, or ask about NFTs, blockchain, wallets or digital art.' : fallback(q.content), fallback: true });
+      }, en ? 'en' : 'ru');
     }, 30000);
   }
 
